@@ -1,0 +1,357 @@
+{
+"all": {
+	
+	"EnemyPack_ProfessorIntro_0": {
+		"type": "event",
+		"lookup": [
+			"TimeTraveller_midcombat"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "Finally, I have found you.",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "And you are?"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "Your reckless meddling with the fabric of time has destabilized reality.",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "I come from a time ravaged by the aftereffects of your little excursion, and have invaded this time loop to stop you for good.",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "Okay...",
+				"loopTag": "squint"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "But if you stop us, we'll just loop again.",
+				"loopTag": "squint"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "Then I shall have to stop you countless times.",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_ProfessorIntro_1": {
+		"type": "event",
+		"lookup": [
+			"TimeTraveller_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_ProfessorIntro_0"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "So what's the future like?",
+				"loopTag": "worried"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "In truth, I come from a mere 2 days in the future.",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "So not much different at all.",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "Not much different? Didn't you say your time was \"ravaged\"?",
+				"loopTag": "worried"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "I... may have exaggerated for dramatic effect.",
+				"loopTag": "nervous",
+				"flipped": true
+			}, 
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "However, your excursion is the cause of a 1-month delay of the new season of The Adventures of Dracula.",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "That's it??",
+				"loopTag": "mad"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "\"That's it\"? You uncultured barbarians!",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_ProfessorIntro_2": {
+		"type": "event",
+		"lookup": [
+			"TimeTraveller_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_ProfessorIntro_1"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "So you went back in time just to prevent your favorite TV show from being delayed?",
+				"loopTag": "grumpy"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "Why not just go 1 month forward in time instead?",
+				"loopTag": "mad"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "You buffoon. It is a lot harder to time-travel 1 month than it is 2 days.",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_ProfessorIntro_3": {
+		"type": "event",
+		"lookup": [
+			"TimeTraveller_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_ProfessorIntro_2"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "You know you could have just waited 1 month and not bothered with time travel, right?",
+				"loopTag": "grumpy"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "... It seemed like a good idea at the time.",
+				"loopTag": "nervous",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "And I don't know how to travel back.",
+				"loopTag": "nervous",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "So I might as well keep attacking you.",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_ProfessorIntro_4": {
+		"type": "event",
+		"lookup": [
+			"TimeTraveller_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_ProfessorIntro_3"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "So since I'm stuck in this time loop now...",
+				"loopTag": "nervous",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "And I already have this giant fighter ship...",
+				"loopTag": "nervous",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "Oh just attack us already!",
+				"loopTag": "mad"
+			}
+		]
+	},
+	
+	"EnemyPack_ProfessorIntro_Infinite": {
+		"type": "event",
+		"lookup": [
+			"TimeTraveller_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_ProfessorIntro_3"
+		],
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "The sunk cost fallacy whispers to me, and who am I to say no?",
+				"flipped": true
+			}
+		]
+	},
+
+
+
+	"EnemyPack_ProfessorChat_Multi_0": {
+		"type": "combat",
+		"allPresent": [
+			"TimeTraveller"
+		],
+		"oncePerCombatTags": [
+			"TimeTravellerPun"
+		],
+		"enemyIntent": "timeTravellerTimeStop",
+		"turnStart": true,
+		"minTurnsThisCombat": 2,
+		"lines": [
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "TimeTraveller",
+						"Text": "Your time is up."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "TimeTraveller",
+						"Text": "It is time."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "TimeTraveller",
+						"Text": "I will deal with you in no time"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "TimeTraveller",
+						"Text": "Time is of the essence."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "TimeTraveller",
+						"Text": "It is a matter of time."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "TimeTraveller",
+						"Text": "Time for a new loop."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "TimeTraveller",
+						"Text": "Time waits for no-one, besides me."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "TimeTraveller",
+						"Text": "A timely demise awaits."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "TimeTraveller",
+						"Text": "It is my time to shine."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "TimeTraveller",
+						"Text": "In time, you will know the extent of your failures."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "TimeTraveller",
+						"Text": "It is my time to shine."
+					}
+				]
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "dizzy",
+						"Text": "Hah. I get it."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "dizzy",
+						"Text": "Clever, clever."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "riggs",
+						"Text": "Huh?"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "riggs",
+						"Text": "Oh, that's a pun, right?"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "peri",
+						"Text": "Wait, was that a pun?",
+						"loopTag": "squint"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "peri",
+						"Text": "Yeah. Very funny.",
+						"loopTag": "squint"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "Ooh. Let me write that down.",
+						"loopTag": "writing"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "Oh, are we bantering?",
+						"loopTag": "shy"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Lame.",
+						"loopTag": "squint"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Stop embarrasing yourself."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "hacker",
+						"Text": "Yeah, heard that one before."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "hacker",
+						"Text": "Pretty weak wordplay, dude."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "shard",
+						"Text": "Oooh let me try! \"Next time, you won't be so lucky!\".",
+						"loopTag": "stoked"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "shard",
+						"Text": "Oooh let me try! \"It's time we wrap this up!\".",
+						"loopTag": "stoked"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "comp",
+						"Text": "You're gonna overload my eye-rolling circuits.",
+						"loopTag": "squint"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "comp",
+						"Text": "Wow, so cheesy!"
+					}
+				]
+			}
+		]
+	}
+}}

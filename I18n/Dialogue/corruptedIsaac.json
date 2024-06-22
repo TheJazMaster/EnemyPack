@@ -1,0 +1,834 @@
+{
+"all": {
+	
+	"EnemyPack_CorruptedIsaacIntro_0": {
+		"type": "event",
+		"lookup": [
+			"before_CorruptedIsaacHidden"
+		],
+		"bg": "BGVanilla",
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "I'm picking up a distress signal."
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "Barely.",
+				"loopTag": "squint"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaacHidden",
+				"Text": "Ready-...*bzzrrhhh*.....-hostiles-...*rrzmmmkh*....-drones-...*kzt*",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"loopTag": "worried",
+				"Text": "It's... a comms vessel?"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"loopTag": "neutral",
+				"Text": "Well, friendly or not, there's no way it's going to be able to hurt us!"
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacIntro_1": {
+		"type": "event",
+		"lookup": [
+			"before_CorruptedIsaacHidden"
+		],
+		"bg": "BGVanilla",
+		"requiredScenes": [
+			"EnemyPack_CorruptedIsaacIntro_0"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaacHidden",
+				"Text": "Enemy-...*kzzhkt*...-they're-...*bzrrkhtczz*...-the Cobalt!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"loopTag": "mad",
+				"Text": "Not this again."
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacIntro_Infinite_0": {
+		"type": "event",
+		"lookup": [
+			"before_CorruptedIsaacHidden"
+		],
+		"bg": "BGVanilla",
+		"requiredScenes": [
+			"EnemyPack_CorruptedIsaacIntro_1"
+		],
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaacHidden",
+				"Text": "Help-...*kzzzhkt*.....",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacIntro_Infinite_1": {
+		"type": "event",
+		"lookup": [
+			"before_CorruptedIsaacHidden"
+		],
+		"bg": "BGVanilla",
+		"requiredScenes": [
+			"EnemyPack_CorruptedIsaacIntro_1"
+		],
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaacHidden",
+				"Text": "Where-...*bzzzmt*..."
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacChat_Multi_0": {
+		"type": "combat",
+		"allPresent": [
+			"CorruptedIsaac"
+		],
+		"oncePerCombatTags": [
+			"ShutUpImpostor"
+		],
+		"turnStart": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaac",
+				"Text": "What's going on? I need to deploy more drones."
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "dizzy",
+						"Text": "I'll make sure to keep our shields up."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Oh come on, I wanted to shoot you!",
+						"loopTag": "mad"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "Those poor drones...",
+						"loopTag": "panic"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "The horns are all wrong..."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "hacker",
+						"Text": "Watch when you shoot, guys."
+					}
+				]
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacChat_Multi_1": {
+		"type": "combat",
+		"allPresent": [
+			"CorruptedIsaac"
+		],
+		"oncePerCombatTags": [
+			"ShutUpImpostor"
+		],
+		"turnStart": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaac",
+				"Text": "I'm warning you! This is self-defence!",
+				"loopTag": "distress"
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "dizzy",
+						"Text": "I'll make sure to keep our shields up."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "I'll give you something to defend against, heh.",
+						"loopTag": "sly"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "Those poor drones...",
+						"loopTag": "panic"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "The horns are all wrong..."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "hacker",
+						"Text": "Watch when you shoot, guys."
+					}
+				]
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacChatNearDeath_Multi_0": {
+		"type": "combat",
+		"allPresent": [
+			"CorruptedIsaac"
+		],
+		"oncePerCombatTags": [
+			"ImpostorAboutToDie"
+		],
+		"enemyIntent": "corruptedIsaacBouttaDie",
+		"turnStart": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaac",
+				"Text": "I'm scared. Help."
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "dizzy",
+						"Text": "Can anomalies feel fear? Interesting."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "riggs",
+						"Text": "Well, we're kind of in a hurry..."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Can we kill this guy already?",
+						"loopTag": "mad"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Don't worry. I have a cannonful of \"help\" coming right up.",
+						"loopTag": "sly"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "I'm sorry...",
+						"loopTag": "panic"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "peri",
+						"Text": "Agh, now I'm second guessing myself.",
+						"loopTag": "squint"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "shard",
+						"Text": "We'll help you go back to sleep, mister!",
+						"loopTag": "paws"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "comp",
+						"Text": "I'm PRETTY sure it's okay if we kill him."
+					}
+				]
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacChatNearDeath_Multi_1": {
+		"type": "combat",
+		"allPresent": [
+			"CorruptedIsaac"
+		],
+		"oncePerCombatTags": [
+			"ImpostorAboutToDie"
+		],
+		"enemyIntent": "corruptedIsaacBouttaDie",
+		"turnStart": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaac",
+				"Text": "C-Can anybody hear me?"
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "dizzy",
+						"Text": "Huh, looks like it can't hear us."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "riggs",
+						"Text": "Can this guy not hear us?"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Can we kill this guy already?",
+						"loopTag": "mad"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Just wait a little. I'll \"shoot\" you a response straight away.",
+						"loopTag": "sly"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "I'm sorry...",
+						"loopTag": "panic"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "peri",
+						"Text": "Agh, now I'm second guessing myself.",
+						"loopTag": "squint"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "shard",
+						"Text": "Hello? Blink twice if you can hear us!"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "comp",
+						"Text": "Of course we can. Are your speakers broken or something?",
+						"loopTag": "grumpy"
+					}
+				]
+			}
+		]
+	},
+	
+	
+	"EnemyPack_CorruptedIsaacReveal_Multi": {
+		"type": "combat",
+		"allPresent": [
+			"CorruptedIsaac",
+			"dizzy"
+		],
+		"lookup": [
+			"corruptedIsaacReveal"
+		],
+		"oncePerCombatTags": [
+			"CorruptedIsaacReveal"
+		],
+		"once" :true,
+		"lines": [
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "CorruptedIsaac",
+						"Text": "Whoa!!!",
+						"loopTag": "distress"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "CorruptedIsaac",
+						"Text": "Uh oh!",
+						"loopTag": "distress"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "CorruptedIsaac",
+						"Text": "They're hostile!",
+						"loopTag": "distress"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "CorruptedIsaac",
+						"Text": "Please, stop shooting!",
+						"loopTag": "distress"
+					}
+				]
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "dizzy",
+						"Text": "Well, we have a Cobalt to get to.",
+						"loopTag": "explains"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "riggs",
+						"Text": "I'm sorry, buddy."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "peri",
+						"Text": "Ignore it.",
+						"loopTag": "mad"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "!!!",
+						"loopTag": "panic"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Ugh, you again?",
+						"loopTag": "mad"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "hacker",
+						"Text": "Eh, you're trying too hard."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "shard",
+						"Text": "We're gonna blow you up!"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "comp",
+						"Text": "We don't have time for this!",
+						"loopTag": "grumpy"
+					}
+				]
+			}
+		]
+	},
+
+	
+	"EnemyPack_CorruptedIsaacReveal_Dizzy": {
+		"type": "combat",
+		"allPresent": [
+			"CorruptedIsaac",
+			"dizzy"
+		],
+		"lookup": [
+			"corruptedIsaacReveal"
+		],
+		"oncePerCombatTags": [
+			"CorruptedIsaacReveal"
+		],
+		"once" :true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaac",
+				"Text": "They're hostile!",
+				"loopTag": "distress"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "dizzy",
+				"Text": "Huh, so this is what time loop anomalies look like.",
+				"loopTag": "serious"
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacReveal_Riggs": {
+		"type": "combat",
+		"allPresent": [
+			"CorruptedIsaac",
+			"riggs"
+		],
+		"lookup": [
+			"corruptedIsaacReveal"
+		],
+		"oncePerCombatTags": [
+			"CorruptedIsaacReveal"
+		],
+		"once" :true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaac",
+				"Text": "Please, stop shooting!!",
+				"loopTag": "distress"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "riggs",
+				"Text": "Isaac? What happened?",
+				"loopTag": "nervous"
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacReveal_Peri": {
+		"type": "combat",
+		"allPresent": [
+			"CorruptedIsaac",
+			"peri"
+		],
+		"lookup": [
+			"corruptedIsaacReveal"
+		],
+		"oncePerCombatTags": [
+			"CorruptedIsaacReveal"
+		],
+		"once" :true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaac",
+				"Text": "What are you doing?!",
+				"loopTag": "distress"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "peri",
+				"Text": "Don't fall for it. It's a fake.",
+				"loopTag": "squint"
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacReveal_Goat": {
+		"type": "combat",
+		"allPresent": [
+			"CorruptedIsaac",
+			"goat"
+		],
+		"lookup": [
+			"corruptedIsaacReveal"
+		],
+		"oncePerCombatTags": [
+			"CorruptedIsaacReveal"
+		],
+		"once" :true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "goat",
+				"Text": "Uh, is that ME?",
+				"loopTag": "panic"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaac",
+				"Text": "Hello? Who's there!?",
+				"loopTag": "distress"
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacReveal_Drake": {
+		"type": "combat",
+		"allPresent": [
+			"CorruptedIsaac",
+			"eunice"
+		],
+		"lookup": [
+			"corruptedIsaacReveal"
+		],
+		"oncePerCombatTags": [
+			"CorruptedIsaacReveal"
+		],
+		"once" :true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaac",
+				"Text": "Pirates!? Get away!",
+				"loopTag": "distress"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "eunice",
+				"Text": "What the hell is that??",
+				"loopTag": "panic"
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacReveal_Max": {
+		"type": "combat",
+		"allPresent": [
+			"CorruptedIsaac",
+			"hacker"
+		],
+		"lookup": [
+			"corruptedIsaacReveal"
+		],
+		"oncePerCombatTags": [
+			"CorruptedIsaacReveal"
+		],
+		"once" :true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaac",
+				"Text": "I'm under attack!",
+				"loopTag": "distress"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "hacker",
+				"Text": "Woah. That's pretty cool.",
+				"loopTag": "intense"
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacReveal_Books_0": {
+		"type": "combat",
+		"allPresent": [
+			"CorruptedIsaac",
+			"shard"
+		],
+		"nonePresent": [
+		  	"goat"
+		],
+		"lookup": [
+			"corruptedIsaacReveal"
+		],
+		"oncePerCombatTags": [
+			"CorruptedIsaacReveal"
+		],
+		"once" :true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaac",
+				"Text": "Woah!",
+				"loopTag": "distress"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "shard",
+				"Text": "Mister Isaac looks a little different!"
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacReveal_Books_1": {
+		"type": "combat",
+		"allPresent": [
+			"CorruptedIsaac",
+			"shard",
+			"goat"
+		],
+		"lookup": [
+			"corruptedIsaacReveal"
+		],
+		"oncePerCombatTags": [
+			"CorruptedIsaacReveal"
+		],
+		"once" :true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaac",
+				"Text": "Woah!",
+				"loopTag": "distress"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "shard",
+				"Text": "Mister Isaac, you look a little different!"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "goat",
+				"Text": "Yeah?",
+				"loopTag": "panic"
+			}
+		]
+	},
+	
+	"EnemyPack_CorruptedIsaacReveal_Cat": {
+		"type": "combat",
+		"allPresent": [
+			"CorruptedIsaac",
+			"comp"
+		],
+		"lookup": [
+			"corruptedIsaacReveal"
+		],
+		"oncePerCombatTags": [
+			"CorruptedIsaacReveal"
+		],
+		"once" :true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "CorruptedIsaac",
+				"Text": "Ah! Why are you attacking me?",
+				"loopTag": "distress"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "Hey, you're not the real Isaac!",
+				"loopTag": "grumpy"
+			}
+		]
+	},
+
+    "EnemyPack_CorruptedIsaacManyTurns_Dizzy": {
+		"type": "combat",
+		"allPresent": [
+		  	"dizzy"
+		],
+		"minTurnsThisCombat": 5,
+		"oncePerCombatTags": [
+		  	"corruptedIsaacManyTurns"
+		],
+		"oncePerRun": true,
+		"turnStart": true,
+		"lines": [
+			{
+				"$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "dizzy",
+				"Text": "I'm getting a lot of interesting data from this."
+		  	},
+			{
+				"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{
+						"$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "comp",
+						"Text": "That seems a bit morbid."
+					},
+					{
+						"$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "You can put up with this?",
+						"loopTag": "squint"
+					},
+					{
+						"$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "Did you get enough data yet?",
+						"loopTag": "shy"
+					}
+				]
+			}
+		]
+	},
+
+    "EnemyPack_CorruptedIsaacManyTurns_Riggs": {
+		"type": "combat",
+		"allPresent": [
+		  	"riggs"
+		],
+		"minTurnsThisCombat": 5,
+		"oncePerCombatTags": [
+		  	"corruptedIsaacManyTurns"
+		],
+		"oncePerRun": true,
+		"turnStart": true,
+		"lines": [
+			{
+				"$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "riggs",
+				"Text": "Well, I'm used to it now. Can we leave?"
+		  	}
+		]
+	},
+
+    "EnemyPack_CorruptedIsaacManyTurns_Goat": {
+		"type": "combat",
+		"allPresent": [
+		  	"goat"
+		],
+		"minTurnsThisCombat": 5,
+		"oncePerCombatTags": [
+		  	"corruptedIsaacManyTurns"
+		],
+		"oncePerRun": true,
+		"turnStart": true,
+		"lines": [
+			{
+				"$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "goat",
+				"Text": "Can we leave? I don't like this.",
+				"loopTag": "shy"
+		  	}
+		]
+	},
+
+    "EnemyPack_CorruptedIsaacManyTurns_Drake": {
+		"type": "combat",
+		"allPresent": [
+		  	"eunice"
+		],
+		"minTurnsThisCombat": 5,
+		"oncePerCombatTags": [
+		  	"corruptedIsaacManyTurns"
+		],
+		"oncePerRun": true,
+		"turnStart": true,
+		"lines": [
+			{
+				"$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "eunice",
+				"Text": "This thing isn't blown up yet? Let's speed it up!",
+				"loopTag": "squint"
+		  	},
+			{
+				"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{
+						"$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "peri",
+						"Text": "We have to mind the drones, Drake."
+					}
+				]
+			}
+		]
+	},
+
+
+    "EnemyPack_CorruptedIsaacLottaDamage_0": {
+		"type": "combat",
+		"allPresent": [
+		  	"CorruptedIsaac"
+		],
+		"playerShotJustHit": true,
+		"oncePerCombatTags": [
+		  	"corruptedIsaacLottaDamage"
+		],
+		"minDamageDealtToEnemyThisTurn": 8,
+		"lines": [
+			{
+				"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{
+						"$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "CorruptedIsaac",
+						"Text": "Ah!",
+						"loopTag": "distress"
+					},
+					{
+						"$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "CorruptedIsaac",
+						"Text": "Oh no!",
+						"loopTag": "distress"
+					},
+					{
+						"$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "CorruptedIsaac",
+						"Text": "What do I do?",
+						"loopTag": "distress"
+					},
+					{
+						"$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "CorruptedIsaac",
+						"Text": "Uhh, my hull?",
+						"loopTag": "distress"
+					}
+				]
+			}
+		]
+	},
+
+	
+	"EnemyPack_CorruptedIsaacFuckingDies": {
+		"type": "event",
+		"lookup": [
+			"after_CorruptedIsaacHidden"
+		],
+		"bg": "BGVanilla",
+		"priority": true,
+		"once": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "..."
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "crew",
+				"Text": "..."
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "..."
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "Moving on!"
+			}
+		]
+	}
+}}

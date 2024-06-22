@@ -1,0 +1,30 @@
+{
+    "enemy": {
+        "Follower": {
+            "name": "GLDR-31 \"STRIDER\" Interceptor"
+        },
+        "Firefly": {
+            "name": "BTL-92 \"FIREFLY\" Defender"
+        },
+        "Jupiter": {
+            "name": "End Transmission"
+        },
+        "Junk": {
+            "name": "Trash Heap"
+        },
+        "Timestop": {
+            "name": "The Inevitable"
+        }
+    },
+    "status": {
+        "Follow": {
+            "name": "Follow",
+            "description": "This ship copies the opposing ship's <c=action>movement</c>."
+        }
+    },
+    "dialogueChoice": {
+        "RiggsVsDoug_Normal": "Riggs!",
+        "RiggsVsDoug_Funny": "Pizza delivery!",
+        "RiggsVsDoug_Quiet": "......."
+    }
+}

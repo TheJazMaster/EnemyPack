@@ -1,0 +1,751 @@
+{
+"all": {
+	
+	"EnemyPack_DougIntro_0": {
+		"type": "event",
+		"lookup": [
+			"Doug_midcombat"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Avast! Who goes there!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "We're just passing through."
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Not so fast! I need to show you this cool ship I made!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"loopTag": "squint",
+				"Text": "Let me guess, it's a practical demonstration."
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Right you are!",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_DougIntro_1": {
+		"type": "event",
+		"lookup": [
+			"Doug_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_DougIntro_0"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Avast! Who goes there!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "Uh, nobody?."
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Oh, my mistake.",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Hey wait a minute, you're trying to trick me!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"loopTag": "squint",
+				"Text": "Dang. That almost worked."
+			}
+		]
+	},
+	
+	"EnemyPack_DougIntro_2": {
+		"type": "event",
+		"lookup": [
+			"Doug_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_DougIntro_1"
+		],
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Avast! Face my ship!",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_DougIntro_Dizzy": {
+		"type": "event",
+		"allPresent": [
+			"dizzy"
+		],
+		"lookup": [
+			"Doug_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_DougIntro_1"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Avast! Who goes there!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "dizzy",
+				"Text": "Hey, we really want to go see the Cobalt. Can you let us through?"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "No!",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_DougIntro_Riggs": {
+		"type": "event",
+		"allPresent": [
+			"riggs"
+		],
+		"lookup": [
+			"Doug_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_DougIntro_1"
+		],
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Avast! Who goes there!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "riggs",
+				"Text": "..."
+			}
+		],
+		"choiceFunc": "RiggsVsDougChoices"
+	},
+	"EnemyPack_RiggsVsDoug_Normal": {
+		"type": "event",
+		"oncePerRun": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Hello, Riggs! Do you want to see my cool ship?",
+				"flipped": true
+			}
+		]
+	},
+	"EnemyPack_RiggsVsDoug_Funny": {
+		"type": "event",
+		"oncePerRun": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Fifteen days late? How dare you! Have at thee!",
+				"flipped": true
+			}
+		]
+	},
+	"EnemyPack_RiggsVsDoug_Quiet": {
+		"type": "event",
+		"oncePerRun": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "...",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Huh, must have imagined it.",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_DougIntro_Peri": {
+		"type": "event",
+		"allPresent": [
+			"peri"
+		],
+		"lookup": [
+			"Doug_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_DougIntro_1"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Avast! Who goes there!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "peri",
+				"Text": "The, err, intergalactic police. You are under arrest."
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "You'll never catch me!",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_DougIntro_Books_0": {
+		"type": "event",
+		"allPresent": [
+			"shard"
+		],
+		"lookup": [
+			"Doug_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_DougIntro_1"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Avast! Who goes there!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "shard",
+				"Text": "Wait, we don't want to hurt you!"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Perfect! Target practice!",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_DougIntro_Isaac": {
+		"type": "event",
+		"allPresent": [
+			"shard"
+		],
+		"lookup": [
+			"Doug_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_DougIntro_1"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Avast! Who goes there!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "goat",
+				"Text": "Oh man, what do I say?",
+				"loopTag": "shy"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Speechless? I would be too, if your ship were half as cool as mine!",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_DougIntro_Drake": {
+		"type": "event",
+		"allPresent": [
+			"eunice"
+		],
+		"lookup": [
+			"Doug_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_DougIntro_1"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Avast! Who goes there!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "eunice",
+				"Text": "Oh you know, just the most notorious pirate around these parts.",
+				"loopTag": "sly"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Wow! I wanna be a pirate too!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Let me show you my piracy skills!",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_DougIntro_Max_0": {
+		"type": "event",
+		"allPresent": [
+			"hacker"
+		],
+		"lookup": [
+			"Doug_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_DougIntro_1"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Avast! Who goes there!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "hacker",
+				"Text": "Orange.",
+				"loopTag": "smile"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Orange who?",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "hacker",
+				"Text": "Orange you glad you're letting us through?",
+				"loopTag": "smile"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "...",
+				"loopTag": "nervous",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "I can't let you live after that one.",
+				"loopTag": "nervous",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_DougIntro_Max_1": {
+		"type": "event",
+		"allPresent": [
+			"hacker"
+		],
+		"lookup": [
+			"Doug_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_DougIntro_1"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Avast! Who goes there!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "hacker",
+				"Text": "Your mom.",
+				"loopTag": "smile"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "... I miss my mom.",
+				"loopTag": "nervous",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "hacker",
+				"Text": "Oh... Sorry."
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "hacker",
+				"Text": "Would attacking us make you feel any better?"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "*sniff* Yeah.",
+				"loopTag": "nervous",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_DougIntro_Books_1": {
+		"type": "event",
+		"allPresent": [
+			"shard"
+		],
+		"lookup": [
+			"Doug_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_DougIntro_1"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Avast! Who goes there!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "shard",
+				"Text": "Uh, I'm selling cookies!",
+				"loopTag": "paws"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Sorry, I'm on a diet!",
+				"flipped": true
+			}
+		]
+	},
+
+	"EnemyPack_DougChat_Multi_0": {
+		"type": "combat",
+		"allPresent": [
+			"Doug"
+		],
+		"oncePerCombatTags": [
+			"ShutUpDoug"
+		],
+		"turnStart": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Vision's for suckers! I work off of instinct!"
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "dizzy",
+						"Text": "This should be easy."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "peri",
+						"Text": "You're going to hurt yourself that way.",
+						"loopTag": "mad"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "How's that working out for you?"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "Does that even work?"
+					}
+				]
+			}
+		]
+	},
+
+	"EnemyPack_DougChat_Multi_1": {
+		"type": "combat",
+		"allPresent": [
+			"Doug"
+		],
+		"oncePerCombatTags": [
+			"ShutUpDoug"
+		],
+		"turnStart": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "I'm twice the pirate you'll ever be!"
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "riggs",
+						"Text": "Dang. This guy is pretty cool."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "You wanna say that again?",
+						"loopTag": "mad"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "He's right...",
+						"loopTag": "shy"
+					}
+				]
+			}
+		]
+	},
+
+	"EnemyPack_DougChat_Multi_2": {
+		"type": "combat",
+		"allPresent": [
+			"Doug",
+			"eunice",
+			"peri"
+		],
+		"oncePerCombatTags": [
+			"ShutUpDoug"
+		],
+		"turnStart": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "I'm twice the pirate you'll ever be!"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "peri",
+				"Text": "And twice as reckless as OUR pirate."
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "eunice",
+				"Text": "Are you seriously comparing me to this chump?",
+				"loopTag": "mad"
+			}
+		]
+	},
+
+	"EnemyPack_DougChat_Multi_3": {
+		"type": "combat",
+		"allPresent": [
+			"Doug"
+		],
+		"oncePerCombatTags": [
+			"ShutUpDoug"
+		],
+		"turnStart": true,
+		"maxTurnsThisCombat": 2,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "This battle will be legendary!"
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "riggs",
+						"Text": "You know, maybe it will be!"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Pfft. Keep dreaming.",
+						"loopTag": "sly"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "hacker",
+						"Text": "This is embarrassing."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "comp",
+						"Text": "Really? With THAT hunk of junk?"
+					}
+				]
+			}
+		]
+	},
+
+	"EnemyPack_DougBrokePart_Multi_0": {
+		"type": "combat",
+		"allPresent": [
+			"Doug"
+		],
+		"oncePerCombatTags": [
+			"BrokeDougsPart"
+		],
+		"priority": true,
+		"lookup": [
+			"brokeDougsPart"
+		],
+		"minTurnsThisCombat": 2,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "What was that? Am I winning?",
+				"loopTag": "nervous"
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Yeah, keep it up.",
+						"loopTag": "sly"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "hacker",
+						"Text": "Totally."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "Um...",
+						"loopTag": "shy"
+					}
+				]
+			}
+		]
+	},
+
+	"EnemyPack_DougBrokePart_Multi_1": {
+		"type": "combat",
+		"allPresent": [
+			"Doug"
+		],
+		"oncePerCombatTags": [
+			"BrokeDougsPart"
+		],
+		"priority": true,
+		"lookup": [
+			"brokeDougsPart"
+		],
+		"minTurnsThisCombat": 2,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Yeah! Take that!"
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "dizzy",
+						"Text": "Dude, that was your ship.",
+						"loopTag": "explains"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Dude, that was your ship.",
+						"loopTag": "squint"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "Uh, that was your ship."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "hacker",
+						"Text": "Dude, that was your ship."
+					}
+				]
+			}
+		]
+	},
+
+	"EnemyPack_DougBrokePart_Multi_2": {
+		"type": "combat",
+		"allPresent": [
+			"Doug"
+		],
+		"oncePerCombatTags": [
+			"BrokeDougsPart"
+		],
+		"priority": true,
+		"lookup": [
+			"brokeDougsPart"
+		],
+		"minTurnsThisCombat": 2,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Doug",
+				"Text": "Do I smell smoke?",
+				"loopTag": "nervous"
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "peri",
+						"Text": "You didn't think this through very well, did you.",
+						"loopTag": "squint"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "Do we tell him?",
+						"loopTag": "shy"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "comp",
+						"Text": "How is that thing even holding itself together?"
+					}
+				]
+			}
+		]
+	},
+
+	"EnemyPack_Dougover_Multi": {
+		"type": "combat",
+		"allPresent": [
+			"Doug"
+		],
+		"oncePerCombatTags": [
+			"BrokeCoolShip"
+		],
+		"enemyIntent": "brokeCoolShip",
+		"lines": [
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Doug",
+						"Text": "You're no fun...",
+						"loopTag": "nervous"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Doug",
+						"Text": "You broke it!",
+						"loopTag": "nervous"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Doug",
+						"Text": "My ship! My awesome ship!",
+						"loopTag": "nervous"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Doug",
+						"Text": "Fine, you win...",
+						"loopTag": "nervous"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Doug",
+						"Text": "Aww...",
+						"loopTag": "nervous"
+					}
+				]
+			}
+		]
+	}
+}}
