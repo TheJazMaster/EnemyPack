@@ -147,6 +147,13 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 		{
 			script = ".Doug_midcombat"
 		});
+		if (s.GetHarderEnemies()) {
+			c.Queue(new AStatus {
+				status = Status.autododgeLeft,
+				statusAmount = 1,
+				targetPlayer = false
+			});
+		}
 	}
 
 	public override void AfterWasHit(State s, Combat c, Ship selfShip, int? part)

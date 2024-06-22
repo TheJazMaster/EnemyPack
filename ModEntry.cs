@@ -17,7 +17,6 @@ public sealed class ModEntry : SimpleMod {
     internal static ModEntry Instance { get; private set; } = null!;
 
     internal Harmony Harmony { get; }
-	internal IKokoroApi KokoroApi { get; }
 	internal IMoreDifficultiesApi? MoreDifficultiesApi { get; }
 
     internal IStatusEntry FollowStatus { get; }
@@ -41,8 +40,7 @@ public sealed class ModEntry : SimpleMod {
 		Instance = this;
 		Harmony = new(package.Manifest.UniqueName);
 		MoreDifficultiesApi = helper.ModRegistry.GetApi<IMoreDifficultiesApi>("TheJazMaster.MoreDifficulties");
-		KokoroApi = helper.ModRegistry.GetApi<IKokoroApi>("Shockah.Kokoro")!;
-
+	
 		AMovePatches.Apply();
 		AIHelpersPatches.Apply();
 		DBPatches.Apply();

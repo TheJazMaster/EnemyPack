@@ -22,7 +22,7 @@ public class AMovePatches
     {
         Status follow = Instance.FollowStatus.Status;
         Ship ship = __instance.targetPlayer ? c.otherShip : s.ship;
-        if (ship.Get(follow) > 0 && !(Instance.KokoroApi.TryGetExtensionData(__instance, FromFollowKey, out bool value) && value)) {
+        if (ship.Get(follow) > 0 && !(Instance.Helper.ModData.TryGetModData(__instance, FromFollowKey, out bool value) && value)) {
             c.QueueImmediate(new AMove {
                 dir = __instance.dir,
                 ignoreHermes = false,

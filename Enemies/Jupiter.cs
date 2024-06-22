@@ -47,9 +47,9 @@ internal sealed class JupiterEnemy : AI, IRegisterableEnemy
 			});
 		}
 		if (ModEntry.Instance.IsCosmicEnabled(s)) {
-			c.stuff.Add(12, new JupiterDrone
+			c.stuff.Add(6, new JupiterDrone
 			{
-				x = 12,
+				x = 6,
 				targetPlayer = true
 			});
 		}

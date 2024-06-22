@@ -22,14 +22,6 @@ internal sealed class TimestopEnemy : AI, IRegisterableEnemy
 	public override void OnCombatStart(State s, Combat c)
 	{
 		c.bg = new BGCloudCity();
-		if (ModEntry.Instance.IsCosmicEnabled(s)) {
-			c.Queue(new AStatus
-			{
-				targetPlayer = false,
-				status = Status.reflexiveCoating,
-				statusAmount = 99
-			});
-		}
 		c.Queue(new AMidCombatDialogue
 		{
 			script = ".TimeTraveller_midcombat"
@@ -95,6 +87,7 @@ internal sealed class TimestopEnemy : AI, IRegisterableEnemy
 				type = PType.cockpit,
 				skin = "cockpit_ancient",
 				stunModifier = PStunMod.stunnable,
+				damageModifier = s.GetHarderElites() ? PDamMod.armor : PDamMod.none
 			},
 			new Part {
 				key = "cannon.middle",
@@ -106,6 +99,7 @@ internal sealed class TimestopEnemy : AI, IRegisterableEnemy
 				type = PType.cockpit,
 				skin = "cockpit_ancient",
 				stunModifier = PStunMod.stunnable,
+				damageModifier = s.GetHarderElites() ? PDamMod.armor : PDamMod.none,
 				flip = true
 			},
 			new Part {
