@@ -316,6 +316,7 @@
 			"CorruptedIsaacReveal"
 		],
 		"once" :true,
+		"priority": true,
 		"lines": [
 			{ 	"$type": "SaySwitch, CobaltCore",
 				"lines": [
@@ -648,6 +649,7 @@
     "EnemyPack_CorruptedIsaacManyTurns_Dizzy": {
 		"type": "combat",
 		"allPresent": [
+			"CorruptedIsaac",
 		  	"dizzy"
 		],
 		"minTurnsThisCombat": 5,
@@ -690,6 +692,7 @@
     "EnemyPack_CorruptedIsaacManyTurns_Riggs": {
 		"type": "combat",
 		"allPresent": [
+			"CorruptedIsaac",
 		  	"riggs"
 		],
 		"minTurnsThisCombat": 5,
@@ -710,6 +713,7 @@
     "EnemyPack_CorruptedIsaacManyTurns_Goat": {
 		"type": "combat",
 		"allPresent": [
+			"CorruptedIsaac",
 		  	"goat"
 		],
 		"minTurnsThisCombat": 5,
@@ -731,6 +735,7 @@
     "EnemyPack_CorruptedIsaacManyTurns_Drake": {
 		"type": "combat",
 		"allPresent": [
+			"CorruptedIsaac",
 		  	"eunice"
 		],
 		"minTurnsThisCombat": 5,
@@ -795,7 +800,7 @@
 					{
 						"$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
 						"who": "CorruptedIsaac",
-						"Text": "Uhh, my hull?",
+						"Text": "Um, my hull?",
 						"loopTag": "distress"
 					}
 				]

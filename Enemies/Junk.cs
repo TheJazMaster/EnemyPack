@@ -130,11 +130,11 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 			{
 				(0.25, new MSolarWind
 				{
-					dir = -1
+					dir = 1
 				}),
 				(0.25, new MSolarWind
 				{
-					dir = 1
+					dir = 2
 				})
 			});
 		}
@@ -192,7 +192,9 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 		List<Intent> intents = [
 			new IntentAttack
 			{
-				damage = 2,
+				damage = 1,
+				status = Status.engineStall,
+				statusAmount = 1,
 				key = "cannon.left"
 			},
 			new IntentSpawn
@@ -223,9 +225,7 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 			},
 			new IntentAttack
 			{
-				damage = 1,
-				status = Status.engineStall,
-				statusAmount = 1,
+				damage = 2,
 				key = "cannon.right"
 			}
 		];

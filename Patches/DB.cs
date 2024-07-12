@@ -87,7 +87,7 @@ public class DBPatches
         }
 
     private static void RegisterDialogue(Dictionary<string, string> locale) {
-        foreach (IFileInfo file in PackageRoot.GetRelativeDirectory("I18n/Dialogue").GetFilesRecursively()) {
+        foreach (IFileInfo file in PackageRoot.GetRelativeDirectory("I18n/Dialogue").GetFilesRecursively().Where(f => f.Name.EndsWith(".json"))) {
             Story dialogue = Mutil.LoadJsonFile<Story>(file.FullName);
 
             foreach (string key in dialogue.all.Keys) {
@@ -114,7 +114,7 @@ public class DBPatches
 
     private static void RegisterShipParts() {
         foreach(IDirectoryInfo directory in PackageRoot.GetRelativeDirectory("Sprites/Parts").Directories) {
-		    foreach(IFileInfo file in directory.GetFilesRecursively()) {
+		    foreach(IFileInfo file in directory.GetFilesRecursively().Where(f => f.Name.EndsWith(".png"))) {
                 string key = string.Concat("EnemyPack_", directory.Name, "_", file.Name.AsSpan(0, file.Name.IndexOf('.')));
                 if (!DB.parts.ContainsKey(key)) {
                     DB.parts[key] = Instance.Helper.Content.Sprites.RegisterSprite(file).Sprite;
@@ -125,7 +125,7 @@ public class DBPatches
 
     private static List<Spr> RegisterTalkSprites(string charName, string looptag)
     {
-        var files = Instance.Package.PackageRoot.GetRelative($"Sprites/Character/{charName}/{looptag}").AsDirectory?.GetFilesRecursively();
+        var files = Instance.Package.PackageRoot.GetRelative($"Sprites/Character/{charName}/{looptag}").AsDirectory?.GetFilesRecursively().Where(f => f.Name.EndsWith(".png"));
 		List<Spr> sprites = [];
 		if (files != null) {
 			foreach (IFileInfo file in files) {

@@ -716,6 +716,7 @@
 			"BrokeCoolShip"
 		],
 		"enemyIntent": "brokeCoolShip",
+		"priority": true,
 		"lines": [
 			{ 	"$type": "SaySwitch, CobaltCore",
 				"lines": [
