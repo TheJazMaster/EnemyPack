@@ -32,6 +32,10 @@ internal sealed class FireflyEnemy : AI, IRegisterableEnemy
 		{
 			x = 17
 		});
+		c.stuff.Add(1, new RepairKit
+		{
+			x = 1
+		});
 	}
 
 	public override FightModifier? GetModifier(State s, Combat c)
@@ -76,8 +80,8 @@ internal sealed class FireflyEnemy : AI, IRegisterableEnemy
 		];
 		return new Ship {
 			x = 6,
-			hull = 16,
-			hullMax = 16,
+			hull = 14,
+			hullMax = 14,
 			shieldMaxBase = 0,
 			ai = this,
 			chassisUnder = "chassis_lawless",

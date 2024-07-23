@@ -166,14 +166,14 @@ internal sealed class TimestopEnemy : AI, IRegisterableEnemy
 				{
 					status = Status.tempShield,
 					key = "wing.left",
-					amount = 2,
+					amount = 1,
 					targetSelf = true
 				},
 				new IntentStatus
 				{
 					status = Status.tempShield,
 					key = "wing.right",
-					amount = 2,
+					amount = 1,
 					targetSelf = true
 				},
 			]

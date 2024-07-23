@@ -113,8 +113,8 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 		}
 		return new Ship {
 			x = 7,
-			hull = 10,
-			hullMax = 10,
+			hull = 9,
+			hullMax = 9,
 			shieldMaxBase = 0,
 			ai = this,
 			chassisUnder = "chassis_junker",
@@ -166,6 +166,16 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 				break;
 			}
 		}
+	}
+
+	private string GetAimingPart(Ship ship, string suffix) {
+		if (ship.parts.Find(part => part.key == $"cannon.{suffix}")?.type != PType.empty) {
+			return $"cannon.{suffix}";
+		}
+		if (ship.parts.Find(part => part.key == $"missiles.{suffix}")?.type != PType.empty) {
+			return $"missiles.{suffix}";
+		}
+		return "cockpit";
 	}
 	
 	public override EnemyDecision PickNextIntent(State s, Combat c, Ship ownShip)
@@ -233,7 +243,7 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 		
 		return new EnemyDecision
 		{
-			actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, (aiCounter % 2 == 0) ? "cannon.left" : "cannon.right"),
+			actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, GetAimingPart(ownShip, (aiCounter % 2 == 0) ? "left" : "right")),
 			intents = intents
 		};
 	}

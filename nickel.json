@@ -2,7 +2,7 @@
     "UniqueName": "TheJazMaster.EnemyPack",
     "DisplayName": "Enemy Pack",
     "Description": "Adds a couple of unique new enemies to various zones, with a good amount of custom mechanics, art and dialogue.",
-    "Version": "1.0.3",
+    "Version": "1.0.4",
     "RequiredApiVersion": "0.1.0",
     "EntryPointAssembly": "EnemyPack.dll",
     "LoadPhase": "AfterDbInit",
