@@ -21,7 +21,7 @@
 			},
 			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
 				"who": "CorruptedIsaacHidden",
-				"Text": "Ready-...*bzzrrhhh*.....-hostiles-...*rrzmmmkh*....-drones-...*kzt*",
+				"Text": "Ready<c=faint>-BZzrrhHh-</c>hostiles<c=faint>-rrzMMmkh-</c>drones<c=faint>-kzt.</c>",
 				"flipped": true
 			},
 			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
@@ -51,7 +51,7 @@
 		"lines": [
 			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
 				"who": "CorruptedIsaacHidden",
-				"Text": "Enemy-...*kzzhkt*...-they're-...*bzrrkhtczz*...-the Cobalt!",
+				"Text": "Enemy<c=faint>-KZzhkt-</c>they're<c=faint>-bzrRKhtczZ-</c>the Cobalt!",
 				"flipped": true
 			},
 			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
@@ -74,7 +74,7 @@
 		"lines": [
 			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
 				"who": "CorruptedIsaacHidden",
-				"Text": "Help-...*kzzzhkt*.....",
+				"Text": "Help<c=faint>-KZzzhkt.</c>",
 				"flipped": true
 			}
 		]
@@ -92,7 +92,8 @@
 		"lines": [
 			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
 				"who": "CorruptedIsaacHidden",
-				"Text": "Where-...*bzzzmt*..."
+				"Text": "Where<c=faint>-BzZzzmt.</c>",
+				"flipped": true
 			}
 		]
 	},

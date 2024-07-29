@@ -20,12 +20,14 @@ public class AMovePatches
 
     private static void AMove_Begin_Postfix(AMove __instance, G g, State s, Combat c, int __state)
     {
+        if (__instance.dir == 0)
+            return;
         Status follow = Instance.FollowStatus.Status;
         Ship ship = __instance.targetPlayer ? c.otherShip : s.ship;
         if (ship.Get(follow) > 0 && !(Instance.Helper.ModData.TryGetModData(__instance, FromFollowKey, out bool value) && value)) {
             c.QueueImmediate(new AMove {
                 dir = __instance.dir,
-                ignoreHermes = false,
+                ignoreHermes = __instance.ignoreHermes,
                 targetPlayer = !__instance.targetPlayer
             }.ApplyModData(FromFollowKey, true));
         }
