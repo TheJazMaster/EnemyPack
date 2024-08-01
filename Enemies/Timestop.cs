@@ -86,8 +86,7 @@ internal sealed class TimestopEnemy : AI, IRegisterableEnemy
 				key = "cockpit.left",
 				type = PType.cockpit,
 				skin = "cockpit_ancient",
-				stunModifier = PStunMod.stunnable,
-				damageModifier = s.GetHarderElites() ? PDamMod.armor : PDamMod.none
+				stunModifier = PStunMod.stunnable
 			},
 			new Part {
 				key = "cannon.middle",
@@ -99,7 +98,6 @@ internal sealed class TimestopEnemy : AI, IRegisterableEnemy
 				type = PType.cockpit,
 				skin = "cockpit_ancient",
 				stunModifier = PStunMod.stunnable,
-				damageModifier = s.GetHarderElites() ? PDamMod.armor : PDamMod.none,
 				flip = true
 			},
 			new Part {
@@ -130,8 +128,8 @@ internal sealed class TimestopEnemy : AI, IRegisterableEnemy
 		];
 		return new Ship {
 			x = 6,
-			hull = 16,
-			hullMax = 16,
+			hull = 18,
+			hullMax = 18,
 			shieldMaxBase = 7,
 			ai = this,
 			chassisUnder = "chassis_cobalt",
@@ -154,7 +152,7 @@ internal sealed class TimestopEnemy : AI, IRegisterableEnemy
 				new IntentAttack
 				{
 					damage = 1,
-					multiHit = 2,
+					multiHit = s.GetHarderElites() ? 2 : 1,
 					key = "cannon.middle"
 				},
 				new IntentAttack

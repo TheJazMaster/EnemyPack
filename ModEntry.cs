@@ -20,6 +20,7 @@ public sealed class ModEntry : SimpleMod {
 	internal IMoreDifficultiesApi? MoreDifficultiesApi { get; }
 
     internal IStatusEntry FollowStatus { get; }
+    internal IStatusEntry DuctTapeStatus { get; }
 
 	internal Spr TimeTravelerSprite { get; }
 
@@ -44,6 +45,8 @@ public sealed class ModEntry : SimpleMod {
 		AMovePatches.Apply();
 		AIHelpersPatches.Apply();
 		DBPatches.Apply();
+		ShipPatches.Apply();
+		ABreakPartPatches.Apply();
 
 		AnyLocalizations = new JsonLocalizationProvider(
 			tokenExtractor: new SimpleLocalizationTokenExtractor(),
@@ -63,6 +66,17 @@ public sealed class ModEntry : SimpleMod {
 			},
 			Name = AnyLocalizations.Bind(["status", "Follow", "name"]).Localize,
 			Description = AnyLocalizations.Bind(["status", "Follow", "description"]).Localize
+		});
+		DuctTapeStatus = helper.Content.Statuses.RegisterStatus("DuctTape", new()
+		{
+			Definition = new()
+			{
+				icon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Sprites/Icons/DuctTape.png")).Sprite,
+				color = new("b0b0b0"),
+				isGood = true
+			},
+			Name = AnyLocalizations.Bind(["status", "DuctTape", "name"]).Localize,
+			Description = AnyLocalizations.Bind(["status", "DuctTape", "description"]).Localize
 		});
 
 		foreach (Type type in EnemyTypes)

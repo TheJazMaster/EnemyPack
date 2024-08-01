@@ -690,7 +690,7 @@
 				"lines": [
 					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
 						"who": "peri",
-						"Text": "You didn't think this through very well, did you.",
+						"Text": "You didn't think this through very well, did you?",
 						"loopTag": "squint"
 					},
 					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",

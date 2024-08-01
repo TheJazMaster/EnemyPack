@@ -113,8 +113,8 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 		}
 		return new Ship {
 			x = 7,
-			hull = 9,
-			hullMax = 9,
+			hull = 11,
+			hullMax = 11,
 			shieldMaxBase = 0,
 			ai = this,
 			chassisUnder = "chassis_junker",
@@ -147,13 +147,11 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 		{
 			script = ".Doug_midcombat"
 		});
-		if (s.GetHarderEnemies()) {
-			c.Queue(new AStatus {
-				status = Status.autododgeLeft,
-				statusAmount = 1,
-				targetPlayer = false
-			});
-		}
+		c.Queue(new AStatus {
+			status = ModEntry.Instance.DuctTapeStatus.Status,
+			statusAmount = s.GetHarderEnemies() ? 2 : 1,
+			targetPlayer = false
+		});
 	}
 
 	public override void AfterWasHit(State s, Combat c, Ship selfShip, int? part)
@@ -215,7 +213,7 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 				key = "missiles.right"
 			},
 			new IntentStatus {
-				status = Status.autododgeLeft,
+				status = ModEntry.Instance.DuctTapeStatus.Status,
 				amount = 1,
 				targetSelf = true,
 				key = "wing.right"

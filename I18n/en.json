@@ -20,6 +20,10 @@
         "Follow": {
             "name": "Follow",
             "description": "This ship copies the opposing ship's <c=action>movement</c>."
+        },
+        "DuctTape": {
+            "name": "Duct Tape",
+            "description": "Whenever a ship part would be broken, lose 1 <c=status>duct tape</c> instead. <c=downside>Goes away at the start of the turn.</c>"
         }
     },
     "dialogueChoice": {
