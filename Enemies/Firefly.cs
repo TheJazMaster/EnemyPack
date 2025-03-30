@@ -8,7 +8,6 @@ using Nanoray.PluginManager;
 using Newtonsoft.Json;
 using Nickel;
 
-#nullable enable
 namespace TheJazMaster.EnemyPack.Enemies;
 
 internal sealed class FireflyEnemy : AI, IRegisterableEnemy
@@ -18,11 +17,12 @@ internal sealed class FireflyEnemy : AI, IRegisterableEnemy
 
 	public static void Register(IModHelper helper)
 	{
-		helper.Content.Enemies.RegisterEnemy(new() {
-			EnemyType = typeof(FireflyEnemy),
+		Type thisType = MethodBase.GetCurrentMethod()!.DeclaringType!;
+		IRegisterableEnemy.MakeSetting(helper, helper.Content.Enemies.RegisterEnemy(new() {
+			EnemyType = thisType,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["enemy", "Firefly", "name"]).Localize,
-			ShouldAppearOnMap = (_, map) => map is MapFirst ? BattleType.Normal : null
-		});
+			ShouldAppearOnMap = (_, map) => IRegisterableEnemy.IfEnabled(thisType, map is MapFirst ? BattleType.Normal : null)
+		}));
 	}
 
 	public override void OnCombatStart(State s, Combat c)
@@ -75,7 +75,7 @@ internal sealed class FireflyEnemy : AI, IRegisterableEnemy
 				key = "cockpit",
 				type = PType.cockpit,
 				damageModifier = PDamMod.weak,
-				skin = "cockpit_wizard"//cockpit_bramblepelt
+				skin = "cockpit_wizard"
 			},
 		];
 		return new Ship {

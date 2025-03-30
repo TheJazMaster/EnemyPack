@@ -4,6 +4,8 @@ using System.Linq;
 using Nickel;
 using TheJazMaster.EnemyPack;
 using TheJazMaster.EnemyPack.Actions;
+using TheJazMaster.EnemyPack.Artifacts;
+using TheJazMaster.EnemyPack.Cards;
 
 public static class EventsModded
 {
@@ -35,6 +37,72 @@ public static class EventsModded
 				label = Localizations.Localize(["dialogueChoice", key3]),
 				key = Keyed(key3),
 				actions = { new AMakeFlee() }
+			}
+		];
+	}
+
+	public static List<Choice> GetGoldenEgg(State s) {
+		string key = "GetGoldenEgg_Yes";
+		string key2 = "GetGoldenEgg_No";
+
+		return
+		[
+			new Choice
+			{
+				label = Localizations.Localize(["dialogueChoice", key]),
+				key = Keyed(key),
+				actions = { new AAddArtifact
+				{
+					artifact = new GoldenEggArtifact()
+				} }
+			},
+			new Choice
+			{
+				label = Localizations.Localize(["dialogueChoice", key2]),
+				key = Keyed(key2)
+			}
+		];
+	}
+
+	public static List<Choice> BoomerChallenge(State s) {
+		string key = "BoomerChallenge_Accept";
+		string key2 = "BoomerChallenge_Refuse";
+
+		return
+		[
+			new Choice
+			{
+				label = Localizations.Localize(["dialogueChoice", key]),
+				key = Keyed(key),
+				actions = { new ABoomerChallenge {
+					accepted = true
+				} }
+			},
+			new Choice
+			{
+				label = Localizations.Localize(["dialogueChoice", key2]),
+				key = Keyed(key2),
+				actions = { new ABoomerChallenge {
+					accepted = false
+				} }
+			}
+		];
+	}
+
+	public static List<Choice> BoomerChallengeWin(State s) {
+		return
+		[
+			new Choice
+			{
+				label = Localizations.Localize(["dialogueChoice", "BoomerChallengeWin"]),
+				key = Keyed("Boomer_SucceedAfter"),
+				actions = {
+					new AAddCard {
+						card = new BoomerMineCard(),
+						callItTheDeckNotTheDrawPile = true
+					},
+					new AMakeBoomerFlee()
+				}
 			}
 		];
 	}

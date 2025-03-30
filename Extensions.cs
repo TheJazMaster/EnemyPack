@@ -9,7 +9,6 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 
-#nullable enable
 namespace TheJazMaster.EnemyPack;
 
 internal static class Extensions

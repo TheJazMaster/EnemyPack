@@ -27,7 +27,7 @@ public class AMovePatches
         if (ship.Get(follow) > 0 && !(Instance.Helper.ModData.TryGetModData(__instance, FromFollowKey, out bool value) && value)) {
             c.QueueImmediate(new AMove {
                 dir = __instance.dir,
-                ignoreHermes = __instance.ignoreHermes,
+                // ignoreHermes = __instance.ignoreHermes,
                 targetPlayer = !__instance.targetPlayer
             }.ApplyModData(FromFollowKey, true));
         }

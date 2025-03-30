@@ -18,11 +18,12 @@ internal sealed class FollowerEnemy : AI, IRegisterableEnemy
 
 	public static void Register(IModHelper helper)
 	{
-		helper.Content.Enemies.RegisterEnemy(new() {
-			EnemyType = typeof(FollowerEnemy),
+		Type thisType = MethodBase.GetCurrentMethod()!.DeclaringType!;
+		IRegisterableEnemy.MakeSetting(helper, helper.Content.Enemies.RegisterEnemy(new() {
+			EnemyType = thisType,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["enemy", "Follower", "name"]).Localize,
-			ShouldAppearOnMap = (_, map) => map is MapLawless ? BattleType.Normal : null
-		});
+			ShouldAppearOnMap = (_, map) => IRegisterableEnemy.IfEnabled(thisType, map is MapLawless ? BattleType.Normal : null)
+		}));
 	}
 
 	public override void OnCombatStart(State s, Combat c)
@@ -42,53 +43,52 @@ internal sealed class FollowerEnemy : AI, IRegisterableEnemy
 		{
 			type = "wasp"
 		};
-		int health = s.GetHarderEnemies() ? 8 : 11;
 		List<Part> parts = [
 			new Part {
 				key = "wing.left",
 				type = PType.wing,
 				damageModifier = PDamMod.armor,
-				skin = "wing_possum"
+				skin = "EnemyPack_Strider_wing"
 			},
 			new Part {
 				key = "cannon.left",
 				type = PType.cannon,
-				skin = "cannon_gemini"
+				skin = "EnemyPack_Strider_cannon"
 			},
 			new Part {
 				key = "bay.left",
 				type = PType.missiles,
-				skin = "missiles_gemini"
+				skin = "EnemyPack_Strider_missiles"
 			},
 			new Part {
 				key = "empty",
 				type = PType.empty,
-				skin = "scaffolding_tridim_red"
+				skin = "EnemyPack_Strider_scaffolding"
 			},
 			new Part {
 				key = "bay.right",
 				type = PType.missiles,
-				skin = "missiles_gemini",
+				skin = "EnemyPack_Strider_missiles",
 				flip = true
 			},
 			new Part {
 				key = "cannon.right",
 				type = PType.cannon,
-				skin = "cannon_gemini",
+				skin = "EnemyPack_Strider_cannon",
 				flip = true
 			},
 			new Part {
 				key = "wing.right",
 				type = PType.wing,
 				damageModifier = PDamMod.armor,
-				skin = "wing_possum",
+				skin = "EnemyPack_Strider_wing",
 				flip = true
 			},
 		];
 		return new Ship {
 			x = 6,
-			hull = health,
-			hullMax = health,
+			hull = 8,
+			hullMax = 8,
 			shieldMaxBase = 14,
 			ai = this,
 			chassisUnder = "chassis_stinger",
@@ -123,6 +123,7 @@ internal sealed class FollowerEnemy : AI, IRegisterableEnemy
 	{
 		var actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cannon.left");
 		double count = actions.Count / 2.0;
+		bool hard = s.GetHarderEnemies();
 		foreach (CardAction action in actions) {
 			if (action is AMove move) {
 				if (move.dir < 0)
@@ -143,27 +144,25 @@ internal sealed class FollowerEnemy : AI, IRegisterableEnemy
 				new IntentAttack
 				{
 					damage = 1,
-					status = Status.heat,
 					key = "cannon.left"
 				},
 				new IntentSpawn
 				{
-					thing = new ShieldDrone {
-						bubbleShield = true
+					thing = new DualDrone {
+						bubbleShield = hard
 					},
 					key = "bay.left"
 				},
 				new IntentSpawn
 				{
-					thing = new ShieldDrone {
-						bubbleShield = true
+					thing = new DualDrone {
+						bubbleShield = hard
 					},
 					key = "bay.right"
 				},
 				new IntentAttack
 				{
 					damage = 1,
-					status = Status.heat,
 					key = "cannon.right"
 				}
 			]
@@ -173,14 +172,12 @@ internal sealed class FollowerEnemy : AI, IRegisterableEnemy
 			intents = [
 				new IntentAttack
 				{
-					damage = 2,
-					status = Status.heat,
+					damage = 3,
 					key = "cannon.left"
 				},
 				new IntentAttack
 				{
-					damage = 2,
-					status = Status.heat,
+					damage = 3,
 					key = "cannon.right"
 				}
 			]

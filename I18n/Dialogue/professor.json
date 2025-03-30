@@ -214,8 +214,6 @@
 		]
 	},
 
-
-
 	"EnemyPack_ProfessorChat_Multi_0": {
 		"type": "combat",
 		"allPresent": [
@@ -224,9 +222,9 @@
 		"oncePerCombatTags": [
 			"TimeTravellerPun"
 		],
-		"enemyIntent": "timeTravellerTimeStop",
+		"enemyIntent": "timeTravellerPowerdrive",
 		"turnStart": true,
-		"minTurnsThisCombat": 2,
+		"priority": true,
 		"lines": [
 			{ 	"$type": "SaySwitch, CobaltCore",
 				"lines": [
@@ -272,7 +270,7 @@
 					},
 					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
 						"who": "TimeTraveller",
-						"Text": "It is my time to shine."
+						"Text": "The time is nigh."
 					}
 				]
 			},
@@ -351,6 +349,23 @@
 						"Text": "Wow, so cheesy!"
 					}
 				]
+			}
+		]
+	},
+
+	"EnemyPack_ProfessorChat_Multi_1": {
+		"type": "combat",
+		"allPresent": [
+			"TimeTraveller"
+		],
+		"enemyIntent": "timeTravellerPowerdrive",
+		"turnStart": true,
+		"minTurnsThisCombat": 7,
+		"priority": true,
+		"lines": [
+			{ 	"$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "TimeTraveller",
+				"Text": "Tick tock."
 			}
 		]
 	}

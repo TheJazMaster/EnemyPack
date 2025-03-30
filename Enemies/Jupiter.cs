@@ -2,10 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
-using HarmonyLib;
-using Microsoft.Extensions.Logging;
-using Nanoray.PluginManager;
 using Newtonsoft.Json;
 using Nickel;
 
@@ -19,11 +15,12 @@ internal sealed class JupiterEnemy : AI, IRegisterableEnemy
 
 	public static void Register(IModHelper helper)
 	{
-		helper.Content.Enemies.RegisterEnemy(new() {
-			EnemyType = typeof(JupiterEnemy),
+		Type thisType = MethodBase.GetCurrentMethod()!.DeclaringType!;
+		IRegisterableEnemy.MakeSetting(helper, helper.Content.Enemies.RegisterEnemy(new() {
+			EnemyType = thisType,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["enemy", "Jupiter", "name"]).Localize,
-			ShouldAppearOnMap = (_, map) => map is MapThree ? BattleType.Normal : null
-		});
+			ShouldAppearOnMap = (_, map) => IRegisterableEnemy.IfEnabled(thisType, map is MapThree ? BattleType.Elite : null)
+		}));
 	}
 
 	public override void OnCombatStart(State s, Combat c)
@@ -128,6 +125,11 @@ internal sealed class JupiterEnemy : AI, IRegisterableEnemy
 		};
 	}
 
+	public override Song? GetSong(State s)
+	{
+		return Song.Elite;
+	}
+
 	public override void AfterWasHit(State s, Combat c, Ship selfShip, int? part)
 	{
 		if (!hasRevealed)
@@ -144,7 +146,7 @@ internal sealed class JupiterEnemy : AI, IRegisterableEnemy
 
 	public static List<Status> GetAssignableStatuses(State s)
 	{
-		return s.characters.Select((Character c) => StatusMeta.deckToMissingStatus[c.deckType.Value]).ToList();
+		return s.characters.Select((Character c) => StatusMeta.deckToMissingStatus[c.deckType!.Value]).ToList();
 	}
 
 	public static bool IsPositionAbovePlayerShip(State s, int x) {
@@ -170,7 +172,7 @@ internal sealed class JupiterEnemy : AI, IRegisterableEnemy
 					new IntentStatus
 					{
 						status = nextStatus,
-						amount = 2,
+						amount = 1,
 						targetSelf = false,
 						key = "comms"
 					},

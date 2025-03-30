@@ -14,6 +14,30 @@
         },
         "Timestop": {
             "name": "The Inevitable"
+        },
+        "Goose": {
+            "name": "SV Ganderer"
+        },
+        "Boomer": {
+            "name": "\"Due Recompense\""
+        },
+        "PupaMk2": {
+            "name": "PPA-319 \"PUPA\" Interceptor Mk2"
+        },
+        "BigGuns": {
+            "name": "Tusken Raider"
+        },
+        "Ouroboros": {
+            "name": "The Ouroboros"
+        }
+    },
+    "deck": {
+        "Boomer": "Boomer"
+    },
+    "action": {
+        "BoomerChallenge": {
+            "True": "<c=healing>ACCEPT</c>\nBoth parties agree to race to blowing up 3 <c=midrow>mines</c> first. <c=keyword>The enemy will behave differently and there's consequences for winning or losing.</c>",
+            "False": "<c=downside>DENY</c>\nJust fight normally."
         }
     },
     "status": {
@@ -21,14 +45,49 @@
             "name": "Follow",
             "description": "This ship copies the opposing ship's <c=action>movement</c>."
         },
+        "Omnipotence": {
+            "name": "Lightspeed",
+            "description": "This ship acts every time a card is played."
+        },
         "DuctTape": {
             "name": "Duct Tape",
             "description": "Whenever a ship part would be broken, lose 1 <c=status>duct tape</c> instead. <c=downside>Goes away at the start of the turn.</c>"
         }
     },
+    "partModifier": {
+        "Unsteady": {
+            "Left": {
+                "name": "Unsteady (left)",
+                "description": "When this part is hit, the ship will <c=downside>immediately</c> move <c=keyword>LEFT</c> 1. <c=faint>(Happens before payback.)</c>"
+            },
+            "Right": {
+                "name": "Unsteady (right)",
+                "description": "When this part is hit, the ship will <c=downside>immediately</c> move <c=keyword>RIGHT</c> 1. <c=faint>(Happens before payback.)</c>"
+            }
+        }
+    },
+    "artifact": {
+        "GoldenEgg": {
+            "name": "GOLDEN EGG",
+            "description": "On pickup, remove all <c=card>Annoyances</c> from your deck, then <c=keyword>upgrade</c> a random card in your deck to a random path."
+        }
+    },
+    "card": {
+        "BoomerMineCard": {
+            "name": "Mine of Honor"
+        }
+    },
     "dialogueChoice": {
         "RiggsVsDoug_Normal": "Riggs!",
         "RiggsVsDoug_Funny": "Pizza delivery!",
-        "RiggsVsDoug_Quiet": "......."
+        "RiggsVsDoug_Quiet": ".......",
+
+        "GetGoldenEgg_Yes": "Take it.",
+        "GetGoldenEgg_No": "Let's leave it.",
+
+        "BoomerChallenge_Accept": "...Okay.",
+        "BoomerChallenge_Refuse": "What? No, that's stupid!",
+
+        "BoomerChallengeWin": "Oh?"
     }
 }

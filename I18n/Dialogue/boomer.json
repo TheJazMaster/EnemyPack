@@ -1,0 +1,583 @@
+{
+"all": {
+	
+	"EnemyPack_BoomerIntro_0": {
+		"type": "event",
+		"lookup": [
+			"Boomer_midcombat"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "Entering a minefield... Uh oh.",
+				"loopTag": "squint"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Stop right there! You're trespassin' on my property!",
+				"flipped": true
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "dizzy",
+						"Text": "...",
+						"loopTag": "frown"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "riggs",
+						"Text": "We didn't mean to!!",
+						"loopTag": "serious"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "peri",
+						"Text": "Everyone, prepare for a fight!",
+						"loopTag": "squint"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "Uhhh, is it too late to run?",
+						"loopTag": "shy"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Good grief.",
+						"loopTag": "sly"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "hacker",
+						"Text": "Crap.",
+						"loopTag": "squint"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "shard",
+						"Text": "Sorry!!!!!"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "comp",
+						"Text": "Uhhhhh, we're sorry?",
+						"loopTag": "worried"
+					}
+				]
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "I was gonna shoot you on sight, but you caught me as I was clearin' out this here minefield... So I'll offer you a deal if you can make yourselves useful!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "If you can blow up <c=keyword>three mines</c> before I do, I'll let you go. If you can't, I'll make you into a starnacle sandwich!",
+				"flipped": true
+			}
+		],
+		"choiceFunc": "BoomerChallenge"
+	},
+	
+	"EnemyPack_BoomerIntro_Books_1": {
+		"type": "event",
+		"lookup": [
+			"Boomer_midcombat"
+		],
+		"allPresent": [
+		  	"shard"
+		],
+		"requiredScenes": [
+			"EnemyPack_BoomerIntro_0"
+		],
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "You there! Trespassers! Stop!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "shard",
+				"Text": "Uh, mister Boomer sir, before you blow us up, can I ask a question?"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Out with it!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "shard",
+				"Text": "Why is your property in a minefield?"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "This here property is prime real estate in the makin'! I bought it with my own hard-earned money that my grandpa gave me!",
+				"flipped": true,
+				"loopTag": "happy"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "And I ain't lettin' you out of it alive unless you prove you're more than just a buncha snoopin', thievin', lazy whippersnappers!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Now help me clear it by blowin' up three of these mines before I do, or I'll blow you to smithereens!",
+				"flipped": true
+			}
+		],
+		"choiceFunc": "BoomerChallenge"
+	},
+	
+	"EnemyPack_BoomerIntro_Books_2": {
+		"type": "event",
+		"lookup": [
+			"Boomer_midcombat"
+		],
+		"allPresent": [
+		  	"shard"
+		],
+		"requiredScenes": [
+			"EnemyPack_BoomerIntro_Books_1"
+		],
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Stop!",
+				"flipped": true,
+				"loopTag": "angry"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "shard",
+				"Text": "You know, mister, you're awfully mean!"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "You don't get enterprisin' by bein' nice! Now blast three mines before me or I'll blow you up!",
+				"flipped": true,
+				"loopTag": "angry"
+			}
+		],
+		"choiceFunc": "BoomerChallenge"
+	},
+	
+	"EnemyPack_BoomerIntro_CAT_1": {
+		"type": "event",
+		"lookup": [
+			"Boomer_midcombat"
+		],
+		"allPresent": [
+		  	"comp"
+		],
+		"requiredScenes": [
+			"EnemyPack_BoomerIntro_0"
+		],
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Stop!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "Beat you to three mines or we're toast?"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Get to it!",
+				"flipped": true
+			}
+		],
+		"choiceFunc": "BoomerChallenge"
+	},
+	
+	"EnemyPack_BoomerIntro_Drake_1": {
+		"type": "event",
+		"lookup": [
+			"Boomer_midcombat"
+		],
+		"allPresent": [
+		  	"eunice"
+		],
+		"requiredScenes": [
+			"EnemyPack_BoomerIntro_0"
+		],
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Stop! Trespassers!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "eunice",
+				"Text": "Ugh. let's just blow him up and get this over with!",
+				"loopTag": "squint"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "You entitled brat! Threatening a man on his own property! I'll show you!!",
+				"flipped": true,
+				"loopTag": "angry"
+			}
+		]
+	},
+	
+	"EnemyPack_BoomerIntro_Drake_2": {
+		"type": "event",
+		"lookup": [
+			"Boomer_midcombat"
+		],
+		"allPresent": [
+		  	"eunice"
+		],
+		"requiredScenes": [
+			"EnemyPack_BoomerIntro_0"
+		],
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Stop! You're tre-",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "eunice",
+				"Text": "Eat paste, old man!",
+				"loopTag": "mad"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Prepare to die!",
+				"flipped": true,
+				"loopTag": "angry"
+			}
+		]
+	},
+	
+	"EnemyPack_BoomerIntro_Infinite": {
+		"type": "event",
+		"lookup": [
+			"Boomer_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_BoomerIntro_0"
+		],
+		"lines": [
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Boomer",
+						"Text": "First to three mines wins! Lose and you're toast!",
+						"flipped": true
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Boomer",
+						"Text": "Trespassers! Clear three space mines before me or I'll make you into space paste!",
+						"flipped": true
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Boomer",
+						"Text": "Interlopers! Get 3 mines before me or I'll scrap your ship for parts!",
+						"flipped": true
+					}
+				]
+			}
+		],
+		"choiceFunc": "BoomerChallenge"
+	},
+	
+	"EnemyPack_Boomer_Fail": {
+		"type": "event",
+		"lookup": [
+			"Boomer_midcombat_fail"
+		],
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "And there goes three!",
+				"flipped": true,
+				"loopTag": "angry"
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Boomer",
+						"Text": "Now you lazy, good-fer-nothin', lollygaggers! I'll blast your ship and add it to my property!",
+						"flipped": true,
+						"loopTag": "angry"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Boomer",
+						"Text": "Now you lousy, thievin', trespassin' entitled brats! Get ready to get scrapped!",
+						"flipped": true,
+						"loopTag": "angry"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Boomer",
+						"Text": "Now you blasted good-fer-nothin' interlopin' trespassers! I'll blow YOU up!",
+						"flipped": true,
+						"loopTag": "angry"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Boomer",
+						"Text": "Now you whippersnappin' snapperwhippers! I'll blow you to bits!",
+						"flipped": true,
+						"loopTag": "angry"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Boomer",
+						"Text": "Now I shoulda known you weren't the enterprisin' type! Get ready to taste space!",
+						"flipped": true,
+						"loopTag": "angry"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Boomer",
+						"Text": "Traitorous cheap lazybones buttsitters! I'll get you now!",
+						"flipped": true,
+						"loopTag": "angry"
+					}
+				]
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "hacker",
+						"Text": "Okay, boomer."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Shut it, boomer!",
+						"loopTag": "mad"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "This guy...",
+						"loopTag": "squint"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "shard",
+						"Text": "Sheesh, mister!",
+						"loopTag": "squint"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "peri",
+						"Text": "Time to fight!",
+						"loopTag": "mad"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "dizzy",
+						"Text": "Guys like this...",
+						"loopTag": "frown"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "riggs",
+						"Text": "Yikes!"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "comp",
+						"Text": "Looks like we don't have a choice now.",
+						"loopTag": "squint"
+					}
+				]
+			}
+		]
+	},
+
+	
+	"EnemyPack_Boomer_Succeed": {
+		"type": "event",
+		"lookup": [
+			"Boomer_midcombat_succeed"
+		],
+		"priority": true,
+		"lines": [
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Boomer",
+						"Text": "I didn't think enterprisin' young folk existed anymore. But, you know, you proved me wrong today. Now take this and scram!",
+						"flipped": true,
+						"loopTag": "happy"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Boomer",
+						"Text": "Nice work, young'uns! I didn't think you'd beat me! Now take this and get off my property!",
+						"flipped": true,
+						"loopTag": "happy"
+					}
+				]
+			}
+		],
+		"choiceFunc": "BoomerChallengeWin"
+	},
+	
+	"EnemyPack_Boomer_SucceedAfter": {
+		"type": "event",
+		"never": true,
+		"lines": [
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "comp",
+						"Text": "See ya!"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "shard",
+						"Text": "Bye!",
+						"loopTag": "paws"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Way ahead of ya.",
+						"loopTag": "squint"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "comp",
+						"Text": "Thanks!"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "peri",
+						"Text": "Thanks."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "riggs",
+						"Text": "Wow!"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "dizzy",
+						"Text": "Thanks!"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "hacker",
+						"Text": "Bye."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "Yeah, yeah, alright."
+					}
+				]
+			}
+		]
+	},
+
+	
+	"EnemyPack_Boomer_Cheating": {
+		"type": "event",
+		"lookup": [
+			"Boomer_midcombat_cheating"
+		],
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Hold on a second! You're just tricking me into blowing me up!",
+				"flipped": true,
+				"loopTag": "angry"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Why you good-fer-nothin bellyachin' hooligans!",
+				"flipped": true,
+				"loopTag": "angry"
+			}
+		]
+	},
+
+	"EnemyPack_BoomerGot1Mine": {
+		"type": "combat",
+		"lookup": [
+			"Boomer_1MineSelf"
+		],
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "That's one for me!",
+				"flipped": true
+			}
+		]
+	},
+
+	"EnemyPack_BoomerGot2Mine": {
+		"type": "combat",
+		"lookup": [
+			"Boomer_2MineSelf"
+		],
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Two! Clock's-a-tickin'!",
+				"flipped": true
+			}
+		]
+	},
+
+	"EnemyPack_YouGot1Mine": {
+		"type": "combat",
+		"lookup": [
+			"Boomer_1MinePlayer"
+		],
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Well, you got one.",
+				"flipped": true
+			}
+		]
+	},
+
+	"EnemyPack_YouGot2Mine": {
+		"type": "combat",
+		"lookup": [
+			"Boomer_2MinePlayer"
+		],
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Alright, that's two fer ya...",
+				"flipped": true
+			}
+		]
+	},
+
+	"EnemyPack_BoomerChallenge_Accept": {
+		"type": "event",
+		"never": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Git to it!",
+				"flipped": true
+			}
+		]
+	},
+
+	"EnemyPack_BoomerChallenge_Refuse": {
+		"type": "event",
+		"never": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "Spineless, eh? That's what I thought!",
+				"flipped": true
+			}
+		]
+	},
+
+	"EnemyPack_BoomerSpawningMines": {
+		"type": "combat",
+		"lookup": [
+			"boomerSpawningMines"
+		],
+		"oncePerCombatTags": [
+			"boomerSpawningMines"
+		],
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Boomer",
+				"Text": "I've got some mines here in my bay I haven't properly blown up...",
+				"flipped": true
+			}
+		]
+	}
+}}

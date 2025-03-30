@@ -1,0 +1,47 @@
+{
+"all": {
+	"EnemyPack_GooseEscape": {
+		"type": "combat",
+		"turnStart": true,
+		"enemyIntent" : "gooseEscape",
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Goose",
+				"Text": "Honk!"
+			}
+		]
+	},
+	
+	"EnemyPack_GooseAfter": {
+		"type": "event",
+		"lookup": [
+			"after_goose_egg"
+		],
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "Oh, there's something in the wreckage!"
+			}
+		],
+		"choiceFunc": "GetGoldenEgg"
+	},
+	"EnemyPack_GetGoldenEgg_Yes": {
+		"type": "event",
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "crew",
+				"Text": "Sweet!"
+			}
+		]
+	},
+	"EnemyPack_GetGoldenEgg_No": {
+		"type": "event",
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "We don't need that."
+			}
+		]
+	}
+}}

@@ -1,0 +1,423 @@
+{
+"all": {
+	"EnemyPack_FerringtonIntro_0": {
+		"type": "event",
+		"lookup": [
+			"Ferrington_midcombat"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Halt! I'm with the space military. We're scanning for illicit activity in the area.",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Transmit your ship's passcode immediately or face full consequences!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "comp",
+				"Text": "Uhhhh, the space military doesn't have jurisdiction in this area."
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "I am the jurisdiction! Charging cannons!",
+				"flipped": true
+			}
+		]
+	},
+
+	"EnemyPack_FerringtonIntro_Peri": {
+		"type": "event",
+		"lookup": [
+			"Ferrington_midcombat"
+		],
+		"allPresent": [
+			"peri"
+		],
+		"requiredScenes": [
+			"EnemyPack_FerringtonIntro_0"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Halt! I'm with the space military. We're scanning for-",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "peri",
+				"Text": "Sir, with all due respect, the space military has no leg to stand on for a legal presence here."
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Legal presence?! I'm as much \"legal presence\" as I'll ever need! Now prepare to die, bandit!",
+				"flipped": true
+			}
+		]
+	},
+
+	"EnemyPack_FerringtonIntro_Dizzy": {
+		"type": "event",
+		"lookup": [
+			"Ferrington_midcombat"
+		],
+		"allPresent": [
+			"dizzy"
+		],
+		"requiredScenes": [
+			"EnemyPack_FerringtonIntro_0"
+		],
+		"once": true,
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Halt! I'm with the space military. We're scanning for-",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "dizzy",
+				"Text": "Uh, \"we\"? It looks like it's just you here."
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Enough! Prepare to get dusted, brigands!",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_FerringtonIntro_Books": {
+		"type": "event",
+		"lookup": [
+			"Ferrington_midcombat"
+		],
+		"allPresent": [
+		  	"shard"
+		],
+		"requiredScenes": [
+			"EnemyPack_FerringtonIntro_0"
+		],
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Halt! Transmit your ship's passcode immediately or face full consequences!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "shard",
+				"Text": "Uh, does this notebook count?",
+				"loopTag": "books"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "No.",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Now face my wrath! Charging cannons.",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_FerringtonIntro_Riggs": {
+		"type": "event",
+		"lookup": [
+			"Ferrington_midcombat"
+		],
+		"allPresent": [
+		  	"riggs"
+		],
+		"requiredScenes": [
+			"EnemyPack_FerringtonIntro_0"
+		],
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Halt! Transmit your ship's passcode immediately or face full consequences!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "riggs",
+				"Text": "Don't shoot! We're just transporting cargo! We're innocent!",
+				"loopTag": "nervous"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Stop wasting time! Transmit passcode or die.",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "riggs",
+				"Text": "Uh......."
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "...Charging cannons!",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_FerringtonIntro_Max": {
+		"type": "event",
+		"lookup": [
+			"Ferrington_midcombat"
+		],
+		"allPresent": [
+		  	"hacker"
+		],
+		"requiredScenes": [
+			"EnemyPack_FerringtonIntro_0"
+		],
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Halt! Transmit your ship's passcode immediately or-",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "hacker",
+				"Text": "You're not really with the space military, are you?",
+				"loopTag": "squint"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Irrelevant! Now transmit passcode or else!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "hacker",
+				"Text": "Cannot confirm nor deny?"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "I've had it! Eat cannon shells, fodder!",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_FerringtonIntro_Drake": {
+		"type": "event",
+		"lookup": [
+			"Ferrington_midcombat"
+		],
+		"allPresent": [
+		  	"eunice"
+		],
+		"requiredScenes": [
+			"EnemyPack_FerringtonIntro_0"
+		],
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Halt! Transmit your ship's passcode immediately or face full consequences!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "eunice",
+				"Text": "Nice jacket. Medals too. Where'd you get 'em?"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "I'm with the space military. Now quit wasting time and transmit that passcode!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "eunice",
+				"Text": "So... war crimes then?",
+				"loopTag": "sly"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "... Charging cannons.",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "eunice",
+				"Text": "War crimes.",
+				"loopTag": "sly"
+			}
+		]
+	},
+	
+	"EnemyPack_FerringtonIntro_Isaac": {
+		"type": "event",
+		"lookup": [
+			"Ferrington_midcombat"
+		],
+		"allPresent": [
+		  	"goat"
+		],
+		"requiredScenes": [
+			"EnemyPack_FerringtonIntro_0"
+		],
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Halt! Transmit your ship's passcode immediately or face full consequences!",
+				"flipped": true
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "goat",
+				"Text": "Uhhh, does this one work?"
+			},
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Invalid passcode! Prepare to die, pirates!",
+				"flipped": true
+			}
+		]
+	},
+	
+	"EnemyPack_FerringtonIntro_Infinite": {
+		"type": "event",
+		"lookup": [
+			"Ferrington_midcombat"
+		],
+		"requiredScenes": [
+			"EnemyPack_FerringtonIntro_0"
+		],
+		"priority": true,
+		"lines": [
+			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+				"who": "Ferrington",
+				"Text": "Prepare to face the law, pirates!",
+				"flipped": true
+			}
+		]
+	},
+	
+
+
+	"EnemyPack_FerringtonCharged": {
+		"type": "combat",
+
+		"oncePerCombatTags": [
+			"giantCannonReady"
+		],
+		"allPresent": [
+			"Ferrington"
+		],
+		"enemyIntent": "giantCannonReady",
+		"priority": true,
+		"lines": [
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Ferrington",
+						"Text": "Cannons charged! You're done for!",
+						"flipped": true
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Ferrington",
+						"Text": "Bahahaha! You're toast!",
+						"flipped": true
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Ferrington",
+						"Text": "Cannons charged! I have you now!",
+						"flipped": true
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Ferrington",
+						"Text": "Cannons charged! Say your prayers!",
+						"flipped": true
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Ferrington",
+						"Text": "Time for you to become space dust!",
+						"flipped": true
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Ferrington",
+						"Text": "You're gone, I tell you! Gone!",
+						"flipped": true
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Ferrington",
+						"Text": "Gahahahaha! GAHAHAHAHA!",
+						"flipped": true
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Ferrington",
+						"Text": "Cannons charged! You're doomed!",
+						"flipped": true
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Ferrington",
+						"Text": "Prepare to face the law, pipsqueaks!",
+						"flipped": true
+					}
+				]
+			}
+		]
+	},
+
+	"EnemyPack_FerringtonCommentary": {
+		"type": "combat",
+		"allPresent": [
+			"Ferrington"
+		],
+		"turnStart": true,
+		"maxTurnsThisCombat": 1,
+		"lines": [
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "goat",
+						"Text": "Uhh, those are some really big guns...",
+						"loopTag": "panic"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "peri",
+						"Text": "We need to get out of here, fast!",
+						"loopTag": "mad"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "eunice",
+						"Text": "Let's end this quickly."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "shard",
+						"Text": "Uh, those are really big guns. We're gonna be okay, right?"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "dizzy",
+						"Text": "We should blow him up before his cannons come online."
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "hacker",
+						"Text": "Alright, we can do this.",
+						"loopTag": "gloves"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "riggs",
+						"Text": "I'll try to keep us away from those cannons!"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "comp",
+						"Text": "Let's blow him up before those cannons finish charging!"
+					},
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "comp",
+						"Text": "We can do this!"
+					}
+				]
+			}
+		]
+	}
+}}

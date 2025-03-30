@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#nullable enable
 namespace TheJazMaster.EnemyPack;
 
 internal sealed class CustomSay : Say

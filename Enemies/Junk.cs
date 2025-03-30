@@ -2,14 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
-using HarmonyLib;
-using Microsoft.Extensions.Logging;
-using Nanoray.PluginManager;
 using Newtonsoft.Json;
 using Nickel;
 
-#nullable enable
 namespace TheJazMaster.EnemyPack.Enemies;
 
 internal sealed class JunkEnemy : AI, IRegisterableEnemy
@@ -21,11 +16,12 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 
 	public static void Register(IModHelper helper)
 	{
-		helper.Content.Enemies.RegisterEnemy(new() {
-			EnemyType = typeof(JunkEnemy),
+		Type thisType = MethodBase.GetCurrentMethod()!.DeclaringType!;
+		IRegisterableEnemy.MakeSetting(helper, helper.Content.Enemies.RegisterEnemy(new() {
+			EnemyType = thisType,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["enemy", "Junk", "name"]).Localize,
-			ShouldAppearOnMap = (_, map) => map is MapFirst ? BattleType.Normal : null
-		});
+			ShouldAppearOnMap = (_, map) => IRegisterableEnemy.IfEnabled(thisType, map is MapFirst ? BattleType.Normal : null)
+		}));
 	}
 
 	private static Dictionary<PType, List<string>> partSkins = new()
@@ -45,6 +41,10 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 			"cannon_pod",
 			"cannon_rust",
 			"cannon_stinger",
+			"EnemyPack_Boomer_cannon",
+			"EnemyPack_Ouroboros_cannon1",
+			"EnemyPack_PupaMk2_cannon",
+			"EnemyPack_Raider_cannon_center",
 		}},
 		{PType.missiles, new List<string> {
 			"missiles_ancient",
@@ -59,6 +59,10 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 			"missiles_conveyor",
 			"missiles_rust",
 			"missiles_stinger",
+			"EnemyPack_Boomer_missiles",
+			"EnemyPack_Jupiter_missiles2",
+			"EnemyPack_Ouroboros_missiles",
+			"EnemyPack_PupaMk2_missiles",
 		}},
 		{PType.wing, new List<string> {
 			"wing_ancient",
@@ -76,6 +80,10 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 			"wing_stag",
 			"wing_tiderunner",
 			"wing_stinger",
+			"EnemyPack_Boomer_wing",
+			"EnemyPack_Ganderer_wing",
+			"EnemyPack_Jupiter_wing1",
+			"EnemyPack_PupaMk2_wing",
 		}}
 	};
 
@@ -175,6 +183,14 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 		}
 		return "cockpit";
 	}
+
+	private bool NoWayToKill(State s, Combat c, Ship ownShip) {
+		return (ownShip.parts.Find(part => part.key == "cannon.left")?.type == PType.empty) &&
+				ownShip.parts.Find(part => part.key == "cannon.right")?.type == PType.empty &&
+				ownShip.parts.Find(part => part.key == "missiles.left")?.type == PType.empty &&
+				ownShip.parts.Find(part => part.key == "missiles.right")?.type == PType.empty &&
+				!c.stuff.Any(thing => (thing.Value is AttackDrone dr && dr.targetPlayer) || thing.Value is Missile ms  && ms.targetPlayer);
+	}
 	
 	public override EnemyDecision PickNextIntent(State s, Combat c, Ship ownShip)
 	{
@@ -186,7 +202,7 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 			};
 		}
 		aiCounter++;
-		if (ownShip.parts.Count(part => part.type != PType.empty) <= 1)
+		if (ownShip.parts.Count(part => part.type != PType.empty) <= 1 || NoWayToKill(s, c, ownShip))
 			return new EnemyDecision {
 				intents = [
 					new IntentEscape
