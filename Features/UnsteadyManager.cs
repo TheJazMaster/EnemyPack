@@ -53,10 +53,6 @@ internal sealed class UnsteadyPartModManager
 		// 	TriggerUnsteadyIfNeeded(state, combat, part, targetPlayer: true);
 		// }, 0);
 
-		// ModEntry.Instance.Helper.Events.RegisterAfterArtifactsHook(nameof(Artifact.OnEnemyGetHit), (State state, Combat combat, Part? part) =>
-		// {
-		// 	TriggerUnsteadyIfNeeded(state, combat, part, targetPlayer: false);
-		// }, 0);
 	}
 
 	private static bool Tutorial_AttachTutorialsByKey_Prefix(G g) {
