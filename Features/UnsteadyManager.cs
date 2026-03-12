@@ -48,10 +48,10 @@ internal sealed class UnsteadyPartModManager
 		// 	TriggerUnsteadyIfNeeded(state, combat, part, targetPlayer: true);
 		// }, 0);
 
-	}
-
-	private static bool Tutorial_AttachTutorialsByKey_Prefix(G g) {
-		return !(g.state?.route is Combat c && c.routeOverride != null);
+		// ModEntry.Instance.Helper.Events.RegisterAfterArtifactsHook(nameof(Artifact.OnEnemyGetHit), (State state, Combat combat, Part? part) =>
+		// {
+		// 	TriggerUnsteadyIfNeeded(state, combat, part, targetPlayer: false);
+		// }, 0);
 	}
 
 	private static void Tutorial_AttachToPart_Postfix(G g, Ship ship, Part part, Box bb, Tutorial __instance) {
