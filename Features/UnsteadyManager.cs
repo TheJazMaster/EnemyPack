@@ -42,11 +42,6 @@ internal sealed class UnsteadyPartModManager
 			original: AccessTools.DeclaredMethod(typeof(Tutorial), nameof(Tutorial.AttachToPart)),
 			postfix: new HarmonyMethod(GetType(), nameof(Tutorial_AttachToPart_Postfix))
 		);
-		ModEntry.Instance.Harmony.TryPatch(
-			logger: ModEntry.Instance.Logger,
-			original: AccessTools.DeclaredMethod(typeof(Tutorial), nameof(Tutorial.AttachTutorialsByKey)),
-			prefix: new HarmonyMethod(GetType(), nameof(Tutorial_AttachTutorialsByKey_Prefix))
-		);
 
 		// ModEntry.Instance.Helper.Events.RegisterAfterArtifactsHook(nameof(Artifact.OnPlayerTakeNormalDamage), (State state, Combat combat, Part? part) =>
 		// {
