@@ -109,7 +109,6 @@ internal sealed class UnsteadyPartModManager
 			.Insert(SequenceMatcherPastBoundsDirection.Before, SequenceMatcherInsertionResultingBounds.IncludingInsertion, [
 				new CodeInstruction(OpCodes.Ldarg_3).WithLabels(labels),
 				new(OpCodes.Ldarg_0),
-				new(OpCodes.Ldfld, AccessTools.DeclaredField(typeof(AMissileHit), "worldX")),
                 ldShip.Value,
 				ldResult.Value,
                 new(OpCodes.Call, AccessTools.DeclaredMethod(typeof(UnsteadyPartModManager), nameof(ApplyUnsteadyMissile))),
