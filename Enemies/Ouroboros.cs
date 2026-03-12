@@ -97,7 +97,7 @@ internal sealed class OuroborosEnemy : AI, IRegisterableEnemy
 
 	public override EnemyDecision PickNextIntent(State s, Combat c, Ship ownShip) => MoveSet(aiCounter++, () => new EnemyDecision
 		{
-			actions = c.isPlayerTurn ? null : AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cockpit"),
+			actions = c.isPlayerTurn ? null : AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cannon.middle"),
 			intents = [
 				new IntentHurtSelf {
 					damage = ModEntry.Instance.IsCosmicEnabled(s) ? 1 : 2,
@@ -106,7 +106,7 @@ internal sealed class OuroborosEnemy : AI, IRegisterableEnemy
 			]
 		}, () => new EnemyDecision
 		{
-			actions = c.isPlayerTurn ? null : AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cannon.left"),
+			actions = c.isPlayerTurn ? null : AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cannon.middle"),
 			intents = [
 				new IntentAttack {
 					damage = 1,
@@ -116,7 +116,7 @@ internal sealed class OuroborosEnemy : AI, IRegisterableEnemy
 			]
 		}, () => new EnemyDecision
 		{
-			actions = c.isPlayerTurn ? null : AIHelpers.MoveToAimAt(s, ownShip, s.ship, "missiles"),
+			actions = c.isPlayerTurn ? null : AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cannon.middle"),
 			intents = [
 				new IntentSpawn {
 					thing = new AttackDrone {
@@ -137,7 +137,7 @@ internal sealed class OuroborosEnemy : AI, IRegisterableEnemy
 			]
 		}, () => new EnemyDecision
 		{
-			actions = c.isPlayerTurn ? null : AIHelpers.MoveToAimAt(s, ownShip, s.ship, "wing"),
+			actions = c.isPlayerTurn ? null : AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cannon.middle"),
 			intents = [
 				new IntentStatus {
 					status = Status.tempShield,
@@ -148,7 +148,7 @@ internal sealed class OuroborosEnemy : AI, IRegisterableEnemy
 			]
 		}, () => new EnemyDecision
 		{
-			actions = c.isPlayerTurn ? null : AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cannon.right"),
+			actions = c.isPlayerTurn ? null : AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cannon.middle"),
 			intents = [
 				new IntentAttack {
 					damage = 3,

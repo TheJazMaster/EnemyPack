@@ -27,14 +27,15 @@ internal sealed class FireflyEnemy : AI, IRegisterableEnemy
 
 	public override void OnCombatStart(State s, Combat c)
 	{
+		int offset = s.ship.hull > 1 ? 8 : 6;
 		c.bg = new BGPlanetVolcanic();
-		c.stuff.Add(17, new RepairKit
+		c.stuff.Add(9 + offset, new RepairKit
 		{
-			x = 17
+			x = 9 + offset
 		});
-		c.stuff.Add(1, new RepairKit
+		c.stuff.Add(9 - offset, new RepairKit
 		{
-			x = 1
+			x = 9 - offset
 		});
 	}
 

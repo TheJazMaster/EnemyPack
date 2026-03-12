@@ -7,6 +7,7 @@ using FSPRO;
 using HarmonyLib;
 using Newtonsoft.Json;
 using Nickel;
+using TheJazMaster.EnemyPack.Actions;
 
 namespace TheJazMaster.EnemyPack.Enemies;
 
@@ -133,7 +134,7 @@ internal sealed class BoomerEnemy : AI, IRegisterableEnemy
 				new IntentAttack
 				{
 					key = "cannon",
-					damage = isChallengeActive ? 2 : 3
+					damage = isChallengeActive ? 1 : 2
 				},
 				new IntentSpawn
 				{
@@ -151,7 +152,7 @@ internal sealed class BoomerEnemy : AI, IRegisterableEnemy
 
 	public override void OnHitByAttack(State s, Combat c, int worldX, AAttack attack)
 	{
-		if (c.otherShip.hull + c.otherShip.Get(Status.shield) <= (c.otherShip.hullMax + c.otherShip.shieldMaxBase) / 2 - 2) {
+		if (c.otherShip.hull <= c.otherShip.hullMax / 2 || c.otherShip.Get(Status.shield) <= c.otherShip.shieldMaxBase / 3) {
 			Enrage(s, c, true);
 		}
 	}
@@ -219,31 +220,9 @@ internal sealed class BoomerEnemy : AI, IRegisterableEnemy
 	public void Enrage(State s, Combat c, bool fromCheating = false) {
 		if (!isChallengeActive) return;
 
-		isChallengeActive = false;
-		enraged = true;
-		c.Queue(new AMidCombatDialogue
-		{
-			script = fromCheating ? ".Boomer_midcombat_cheating" : ".Boomer_midcombat_fail"
+		c.Queue(new ABoomerEnrage {
+			fromCheating = fromCheating
 		});
-		c.Queue(new AStatus
-		{
-			status = Status.payback,
-			statusAmount = 1,
-			targetPlayer = false
-		});
-		c.Queue(new AStatus
-		{
-			status = Status.shield,
-			statusAmount = 2,
-			targetPlayer = false
-		});
-		if (fromCheating) c.Queue(new AStatus
-		{
-			status = Status.powerdrive,
-			statusAmount = 1,
-			targetPlayer = false
-		});
-		if (fromCheating && c.isPlayerTurn) c.Queue(AIHelpers.MoveToAimAt(s, c.otherShip, s.ship, "cannon", avoidMines: true, avoidAsteroids: true));
 	}
 
 	public void Concede(State s, Combat c) {

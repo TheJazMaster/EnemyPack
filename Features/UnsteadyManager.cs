@@ -32,6 +32,16 @@ internal sealed class UnsteadyPartModManager
 			original: AccessTools.DeclaredMethod(typeof(AAttack), nameof(AAttack.Begin)),
 			transpiler: new HarmonyMethod(GetType(), nameof(AAttack_Begin_Transpiler))
 		);
+		ModEntry.Instance.Harmony.TryPatch(
+			logger: ModEntry.Instance.Logger,
+			original: AccessTools.DeclaredMethod(typeof(AMissileHit), nameof(AMissileHit.Update)),
+			transpiler: new HarmonyMethod(GetType(), nameof(AMissileHit_Update_Transpiler))
+		);
+		ModEntry.Instance.Harmony.TryPatch(
+			logger: ModEntry.Instance.Logger,
+			original: AccessTools.DeclaredMethod(typeof(Tutorial), nameof(Tutorial.AttachToPart)),
+			postfix: new HarmonyMethod(GetType(), nameof(Tutorial_AttachToPart_Postfix))
+		);
 
 		// ModEntry.Instance.Helper.Events.RegisterAfterArtifactsHook(nameof(Artifact.OnPlayerTakeNormalDamage), (State state, Combat combat, Part? part) =>
 		// {
@@ -44,7 +54,15 @@ internal sealed class UnsteadyPartModManager
 		// }, 0);
 	}
 
+	private static void Tutorial_AttachToPart_Postfix(G g, Ship ship, Part part, Box bb, Tutorial __instance) {
+		if (g.state?.route is not Combat)
+			return;
 
+		if (part.stunModifier == UnsteadyLeftDamageModifier || part.stunModifier == UnsteadyRightDamageModifier)
+		{
+			Tutorial.PartTutorialTooltip(g, bb, ship.isPlayerShip, "parttrait.EnemyPack_unsteady");
+		}
+	}
 
 	private static IEnumerable<CodeInstruction> AAttack_Begin_Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il, MethodBase originalMethod)
     {
@@ -60,6 +78,29 @@ internal sealed class UnsteadyPartModManager
 			.Insert(SequenceMatcherPastBoundsDirection.Before, SequenceMatcherInsertionResultingBounds.IncludingInsertion, [
 				new CodeInstruction(OpCodes.Ldarg_3).WithLabels(labels),
 				new(OpCodes.Ldarg_0),
+                ldShip.Value,
+				ldResult.Value,
+                new(OpCodes.Call, AccessTools.DeclaredMethod(typeof(UnsteadyPartModManager), nameof(ApplyUnsteady))),
+			])
+            .AllElements();
+    }
+
+
+	private static IEnumerable<CodeInstruction> AMissileHit_Update_Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il, MethodBase originalMethod)
+    {
+		return new SequenceBlockMatcher<CodeInstruction>(instructions).Find(
+                ILMatches.Ldloc<Ship>(originalMethod).CreateLdlocInstruction(out var ldShip).ExtractLabels(out var labels),
+				ILMatches.Ldloc<RaycastResult>(originalMethod).CreateLdlocInstruction(out var ldResult),
+                ILMatches.Ldfld("worldX"),
+				ILMatches.Call("GetPartAtWorldX"),
+				ILMatches.Instruction(OpCodes.Dup),
+				ILMatches.Brtrue
+            )
+			.PointerMatcher(SequenceMatcherRelativeElement.First)
+			.Insert(SequenceMatcherPastBoundsDirection.Before, SequenceMatcherInsertionResultingBounds.IncludingInsertion, [
+				new CodeInstruction(OpCodes.Ldarg_3).WithLabels(labels),
+				new(OpCodes.Ldarg_0),
+				new(OpCodes.Ldfld, AccessTools.DeclaredField(typeof(AMissileHit), "worldX")),
                 ldShip.Value,
 				ldResult.Value,
                 new(OpCodes.Call, AccessTools.DeclaredMethod(typeof(UnsteadyPartModManager), nameof(ApplyUnsteady))),
@@ -86,6 +127,28 @@ internal sealed class UnsteadyPartModManager
 				dir = 1
 			});
 	}
+	
+	private static void ApplyUnsteadyMissile(Combat c, int worldX, Ship ship, RaycastResult result) {
+
+		c.stuff.TryGetValue(worldX, out var missile);
+		Part? p = ship.GetPartAtWorldX(result.worldX);
+		if (p is not { } part || part.invincible || missile == null)
+			return;
+		
+		if (part.stunModifier == UnsteadyLeftDamageModifier) {
+			c.QueueImmediate(new AMove
+			{
+				targetPlayer = missile.targetPlayer,
+				dir = -1
+			});
+		}
+		else if (part.stunModifier == UnsteadyRightDamageModifier)
+			c.QueueImmediate(new AMove
+			{
+				targetPlayer = missile.targetPlayer,
+				dir = 1
+			});
+	}
 
 
 	internal static IEnumerable<Tooltip> MakeUnsteadyPartModTooltips(bool left)
@@ -93,6 +156,7 @@ internal sealed class UnsteadyPartModManager
 		return [new GlossaryTooltip($"{ModEntry.Instance.Package.Manifest.UniqueName}::PartStunModifier::Unsteady")
 			{
 				Icon = UnsteadyModifierIcon.Sprite,
+				FlipIconX = left,
 				TitleColor = Colors.parttrait,
 				Title = ModEntry.Instance.Localizations.Localize(["partModifier", "Unsteady", left ? "Left" : "Right", "name"]),
 				Description = ModEntry.Instance.Localizations.Localize(["partModifier", "Unsteady", left ? "Left" : "Right", "description"])

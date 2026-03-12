@@ -184,12 +184,13 @@ internal sealed class JunkEnemy : AI, IRegisterableEnemy
 		return "cockpit";
 	}
 
-	private bool NoWayToKill(State s, Combat c, Ship ownShip) {
+	private static bool NoWayToKill(State s, Combat c, Ship ownShip) {
 		return (ownShip.parts.Find(part => part.key == "cannon.left")?.type == PType.empty) &&
 				ownShip.parts.Find(part => part.key == "cannon.right")?.type == PType.empty &&
 				ownShip.parts.Find(part => part.key == "missiles.left")?.type == PType.empty &&
 				ownShip.parts.Find(part => part.key == "missiles.right")?.type == PType.empty &&
-				!c.stuff.Any(thing => (thing.Value is AttackDrone dr && dr.targetPlayer) || thing.Value is Missile ms  && ms.targetPlayer);
+				!c.stuff.Any(thing => ((thing.Value is AttackDrone dr && dr.targetPlayer) || thing.Value is Missile ms && ms.targetPlayer)
+				&& thing.Key >= s.ship.x && thing.Key < s.ship.x + s.ship.parts.Count);
 	}
 	
 	public override EnemyDecision PickNextIntent(State s, Combat c, Ship ownShip)

@@ -53,6 +53,7 @@ public sealed class ModEntry : SimpleMod {
 
     internal static IReadOnlyList<Type> CardTypes { get; } = [
 		typeof(BoomerMineCard),
+		typeof(UrgeCard),
 	];
     
     public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
@@ -68,6 +69,7 @@ public sealed class ModEntry : SimpleMod {
 		DBPatches.Apply();
 		ShipPatches.Apply();
 		ABreakPartPatches.Apply();
+		CombatPatches.Apply();
 		_ = new UnsteadyPartModManager();
 
 		AnyLocalizations = new JsonLocalizationProvider(

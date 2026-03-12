@@ -44,6 +44,7 @@ public class DBPatches
     private static void DB_SetLocale_Postfix() {
         RegisterCharacterNames(DB.currentLocale.strings);
         RegisterDialogue(DB.currentLocale.strings);
+        RegisterTutorials(DB.currentLocale.strings);
 
         if (hasInited) return;
         hasInited = true;
@@ -75,14 +76,10 @@ public class DBPatches
                     DB.eventChoiceFns.Add(info.Name, info);
                 }
     }
-    
-    private static string GetHash(string input, SHA256 hash) {
-            byte[] bytes = hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-            StringBuilder builder = new();
-            foreach (byte thisByte in bytes)
-                builder.Append(thisByte.ToString("x2"));
-            return builder.ToString()[..8];
-        }
+
+    private static void RegisterTutorials(Dictionary<string, string> locale) {
+        locale["tutorial.parttrait.EnemyPack_unsteady"] = "This part is <c=keyword>UNSTEADY</c>!\nHitting it will move the enemy!";
+    }
 
     private static void RegisterDialogue(Dictionary<string, string> locale) {
         foreach (IFileInfo file in PackageRoot.GetRelativeDirectory("I18n/Dialogue").GetFilesRecursively().Where(f => f.Name.EndsWith(".json"))) {
@@ -93,10 +90,25 @@ public class DBPatches
 		    }
 
             foreach (string key in dialogue.all.Keys) {
-                if (!DB.story.all.ContainsKey(key)) {
+                if (!hasInited && !DB.story.all.ContainsKey(key)) {
                     DB.story.all[key] = dialogue.all[key];
                 }
+                if (DB.story.all.TryGetValue(key, out StoryNode? value)) {
+                    int i = 0;
+                    foreach (Instruction instr in value.lines) {
+                        if (instr is CustomSay say) {
+                            SetLine(locale, say, key, i++);
+                        } else if (instr is SaySwitch saySwitch) {
+                            saySwitch.lines.OfType<CustomSay>().ToList().ForEach(say => SetLine(locale, say, key, i++));
+                        }
+                    }
+                }
             }
+        }
+        
+        static void SetLine(Dictionary<string, string> locale, CustomSay say, string key, int i) {
+            say.hash = i.ToString();
+            locale[$"{key}:{i++}"] = say.Text;
         }
     }
 

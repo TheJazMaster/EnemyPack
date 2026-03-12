@@ -4,14 +4,14 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 using Nickel;
+using TheJazMaster.EnemyPack.Cards;
 
 namespace TheJazMaster.EnemyPack.Enemies;
 
 internal sealed class JupiterEnemy : AI, IRegisterableEnemy
 {
-	[JsonProperty]
-	private int aiCounter;
-	private bool hasRevealed = false;
+	public int aiCounter = 0;
+	public bool hasRevealed = false;
 
 	public static void Register(IModHelper helper)
 	{
@@ -43,13 +43,13 @@ internal sealed class JupiterEnemy : AI, IRegisterableEnemy
 				targetPlayer = true
 			});
 		}
-		if (ModEntry.Instance.IsCosmicEnabled(s)) {
-			c.stuff.Add(6, new JupiterDrone
-			{
-				x = 6,
-				targetPlayer = true
-			});
-		}
+		// if (ModEntry.Instance.IsCosmicEnabled(s)) {
+		// 	c.stuff.Add(6, new JupiterDrone
+		// 	{
+		// 		x = 6,
+		// 		targetPlayer = true
+		// 	});
+		// }
 		c.stuff.Add(11, new JupiterDrone
 		{
 			x = 11,
@@ -149,43 +149,9 @@ internal sealed class JupiterEnemy : AI, IRegisterableEnemy
 		return s.characters.Select((Character c) => StatusMeta.deckToMissingStatus[c.deckType!.Value]).ToList();
 	}
 
-	public static bool IsPositionAbovePlayerShip(State s, int x) {
-		return x >= s.ship.x && x < s.ship.x + s.ship.parts.Count;
-	}
-
-	public override EnemyDecision PickNextIntent(State s, Combat c, Ship ownShip)
-	{
-		if (c.stuff.Count(pair => pair.Value is JupiterDrone && pair.Value.targetPlayer && IsPositionAbovePlayerShip(s, pair.Value.x)) <= 1) {
-			List<Status> assignableStatuses = GetAssignableStatuses(s);
-			Status nextStatus = (assignableStatuses.Count > 0) ? assignableStatuses.Random(s.rngAi) : Status.heat;
-			return new EnemyDecision {
-				actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, 3),
-				intents = [
-					new IntentSpawn
-					{
-						thing = new JupiterDrone {
-							targetPlayer = true
-						},
-						key = "missiles.left",
-						dialogueTag = ownShip.hull <= 6 ? "corruptedIsaacBouttaDie" : null
-					},
-					new IntentStatus
-					{
-						status = nextStatus,
-						amount = 1,
-						targetSelf = false,
-						key = "comms"
-					},
-					new IntentSpawn
-					{
-						thing = new JupiterDrone {
-							targetPlayer = true
-						},
-						key = "missiles.right"
-					}
-				]
-			};
-		}
+	public override EnemyDecision PickNextIntent(State s, Combat c, Ship ownShip) {
+		List<Status> assignableStatuses = GetAssignableStatuses(s);
+		Status nextStatus = (assignableStatuses.Count > 0) ? assignableStatuses.Random(s.rngAi) : Status.heat;
 		return MoveSet(aiCounter++, () => new EnemyDecision
 		{
 			actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, "missiles.right"),
@@ -196,34 +162,40 @@ internal sealed class JupiterEnemy : AI, IRegisterableEnemy
 						targetPlayer = true
 					},
 					key = "missiles.right",
-						dialogueTag = ownShip.hull <= 6 ? "corruptedIsaacBouttaDie" : null
+					dialogueTag = ownShip.hull <= 6 ? "corruptedIsaacBouttaDie" : null
 				},
 				new IntentGiveCard
 				{
-					card = new TrashAutoShoot(),
+					card = new UrgeCard {
+						upgrade = ModEntry.Instance.IsCosmicEnabled(s) ? Upgrade.A : Upgrade.None
+					},
 					key = "comms",
-					destination = CardDestination.Discard
+					destination = CardDestination.Deck
 				}
 			]
-		}, () => new EnemyDecision
-		{
+		}, () => new EnemyDecision {
 			actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, "missiles.left"),
 			intents = [
-				new IntentSpawn
-				{
+				new IntentSpawn {
 					thing = new JupiterDrone {
 						targetPlayer = true
 					},
 					key = "missiles.left",
 					dialogueTag = ownShip.hull <= 6 ? "corruptedIsaacBouttaDie" : null
 				},
-				new IntentGiveCard
-				{
-					card = new TrashUnplayable(),
-					key = "comms",
-					destination = CardDestination.Deck
+				new IntentStatus {
+					status = nextStatus,
+					amount = 1,
+					targetSelf = false,
+					key = "comms"
+				},
+				new IntentSpawn {
+					thing = new JupiterDrone {
+						targetPlayer = true
+					},
+					key = "missiles.right"
 				}
-			]
+			]	
 		});
 	}
 }

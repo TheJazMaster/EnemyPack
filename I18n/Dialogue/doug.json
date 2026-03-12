@@ -250,7 +250,7 @@
 	"EnemyPack_DougIntro_Isaac": {
 		"type": "event",
 		"allPresent": [
-			"shard"
+			"goat"
 		],
 		"lookup": [
 			"Doug_midcombat"

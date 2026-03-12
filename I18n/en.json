@@ -75,6 +75,14 @@
     "card": {
         "BoomerMineCard": {
             "name": "Mine of Honor"
+        },
+        "UrgeCard": {
+            "name": "Urge",
+            "description": {
+                "None": "When discarded, <c=downside>immediately</c> attack for {{Damage}} damage.",
+                "A": "When discarded, <c=downside>immediately</c> attack for {{Damage}} damage.",
+                "B": "When discarded, <c=downside>immediately</c> attack for {{Damage}} damage, twice."
+            }
         }
     },
     "dialogueChoice": {

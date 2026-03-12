@@ -103,6 +103,7 @@
 		"requiredScenes": [
 			"EnemyPack_FerringtonIntro_0"
 		],
+		"once": true,
 		"priority": true,
 		"lines": [
 			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
@@ -139,6 +140,7 @@
 		"requiredScenes": [
 			"EnemyPack_FerringtonIntro_0"
 		],
+		"once": true,
 		"priority": true,
 		"lines": [
 			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
@@ -179,6 +181,7 @@
 		"requiredScenes": [
 			"EnemyPack_FerringtonIntro_0"
 		],
+		"once": true,
 		"priority": true,
 		"lines": [
 			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
@@ -219,6 +222,7 @@
 		"requiredScenes": [
 			"EnemyPack_FerringtonIntro_0"
 		],
+		"once": true,
 		"priority": true,
 		"lines": [
 			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
@@ -264,6 +268,7 @@
 		"requiredScenes": [
 			"EnemyPack_FerringtonIntro_0"
 		],
+		"once": true,
 		"priority": true,
 		"lines": [
 			{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
@@ -415,6 +420,44 @@
 					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
 						"who": "comp",
 						"Text": "We can do this!"
+					}
+				]
+			}
+		]
+	},
+
+	"EnemyPack_FerringtonBored": {
+		"type": "combat",
+		"allPresent": [
+			"Ferrington"
+		],
+		"turnStart": true,
+		"oncePerCombatTags": [
+			"TuskAnnoyed"
+		],
+		"minTurnsThisCombat": 7,
+		"lines": [
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Ferrington",
+						"Text": "Stop stalling already and meet your maker!"
+					}
+				]
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Ferrington",
+						"Text": "You're damn resilient for a pirate!"
+					}
+				]
+			},
+			{ 	"$type": "SaySwitch, CobaltCore",
+				"lines": [
+					{ "$type": "TheJazMaster.EnemyPack.CustomSay, EnemyPack",
+						"who": "Ferrington",
+						"Text": "Come on! I don't have all day!"
 					}
 				]
 			}
