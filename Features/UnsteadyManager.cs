@@ -128,9 +128,9 @@ internal sealed class UnsteadyPartModManager
 			});
 	}
 	
-	private static void ApplyUnsteadyMissile(Combat c, int worldX, Ship ship, RaycastResult result) {
+	private static void ApplyUnsteadyMissile(Combat c, AMissileHit missileHit, Ship ship, RaycastResult result) {
 
-		c.stuff.TryGetValue(worldX, out var missile);
+		c.stuff.TryGetValue(missileHit.worldX, out var missile);
 		Part? p = ship.GetPartAtWorldX(result.worldX);
 		if (p is not { } part || part.invincible || missile == null)
 			return;
