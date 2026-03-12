@@ -88,7 +88,7 @@ internal sealed class UnsteadyPartModManager
 
 	private static IEnumerable<CodeInstruction> AMissileHit_Update_Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il, MethodBase originalMethod)
     {
-		return new SequenceBlockMatcher<CodeInstruction>(instructions).Find(
+		return new SequenceBlockMatcher<CodeInstruction>(instructions).Find(SequenceBlockMatcherFindOccurence.Last, SequenceMatcherRelativeBounds.WholeSequence,
                 ILMatches.Ldloc<Ship>(originalMethod).CreateLdlocInstruction(out var ldShip).ExtractLabels(out var labels),
 				ILMatches.Ldloc<RaycastResult>(originalMethod).CreateLdlocInstruction(out var ldResult),
                 ILMatches.Ldfld("worldX"),
@@ -103,7 +103,7 @@ internal sealed class UnsteadyPartModManager
 				new(OpCodes.Ldfld, AccessTools.DeclaredField(typeof(AMissileHit), "worldX")),
                 ldShip.Value,
 				ldResult.Value,
-                new(OpCodes.Call, AccessTools.DeclaredMethod(typeof(UnsteadyPartModManager), nameof(ApplyUnsteady))),
+                new(OpCodes.Call, AccessTools.DeclaredMethod(typeof(UnsteadyPartModManager), nameof(ApplyUnsteadyMissile))),
 			])
             .AllElements();
     }
