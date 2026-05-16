@@ -67,13 +67,22 @@ internal sealed class UnsteadyPartModManager
 	private static IEnumerable<CodeInstruction> AAttack_Begin_Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il, MethodBase originalMethod)
     {
 		return new SequenceBlockMatcher<CodeInstruction>(instructions).Find(
-                ILMatches.Ldloc<Ship>(originalMethod).CreateLdlocInstruction(out var ldShip).ExtractLabels(out var labels),
+                ILMatches.Ldloc<Ship>(originalMethod).CreateLdlocInstruction(out var ldShip),
 				ILMatches.Ldloc<RaycastResult>(originalMethod).CreateLdlocInstruction(out var ldResult),
                 ILMatches.Ldfld("worldX"),
 				ILMatches.Call("GetPartAtWorldX"),
 				ILMatches.Instruction(OpCodes.Dup),
 				ILMatches.Brtrue
             )
+			.Find(SequenceBlockMatcherFindOccurence.First, SequenceMatcherRelativeBounds.After, [
+                ILMatches.Ldarg(0),
+                ILMatches.Ldfld("paybackCounter"),
+				ILMatches.LdcI4(100),
+				ILMatches.Bge.GetBranchTarget(out var branch)
+            ])
+			.Find(
+				new ElementMatch<CodeInstruction>("instruction with specified label", i => i.labels.Contains(branch.Value)).ExtractLabels(out var labels)
+			)
 			.PointerMatcher(SequenceMatcherRelativeElement.First)
 			.Insert(SequenceMatcherPastBoundsDirection.Before, SequenceMatcherInsertionResultingBounds.IncludingInsertion, [
 				new CodeInstruction(OpCodes.Ldarg_3).WithLabels(labels),
