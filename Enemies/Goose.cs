@@ -75,7 +75,7 @@ internal sealed class GooseEnemy : AI, IRegisterableEnemy
 			x = 6,
 			hull = 9,
 			hullMax = 9,
-			shieldMaxBase = ModEntry.Instance.IsCosmicEnabled(s) ? 15 : 11,
+			shieldMaxBase = 9,
 			ai = this,
 			chassisUnder = null,
 			parts = parts
@@ -92,7 +92,7 @@ internal sealed class GooseEnemy : AI, IRegisterableEnemy
 						key = "cannon",
 						damage = 1,
 						cardOnHit = new TrashAnnoyance {
-							upgrade = s.GetHarderEnemies() ? Upgrade.A : Upgrade.None
+							upgrade = ModEntry.Instance.IsCosmicEnabled(s) ? Upgrade.B : (s.GetHarderEnemies() ? Upgrade.A : Upgrade.None)
 						},
 						destination = CardDestination.Discard
 					},
