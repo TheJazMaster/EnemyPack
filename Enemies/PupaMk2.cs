@@ -121,13 +121,13 @@ internal sealed class PupaMk2Enemy : AI, IRegisterableEnemy
 				new IntentGiveCard {
 					key = "missiles.left",
 					card = new ColorlessTrash(),
-					amount = 2,
+					amount = 3,
 					destination = CardDestination.Deck
 				},
 				new IntentGiveCard {
 					key = "missiles.right",
 					card = new ColorlessTrash(),
-					amount = 2,
+					amount = 3,
 					destination = CardDestination.Discard
 				}
 			]
