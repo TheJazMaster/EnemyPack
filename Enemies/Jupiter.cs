@@ -185,7 +185,7 @@ internal sealed class JupiterEnemy : AI, IRegisterableEnemy
 				},
 				new IntentStatus {
 					status = nextStatus,
-					amount = 1,
+					amount = 2,
 					targetSelf = false,
 					key = "comms"
 				},
