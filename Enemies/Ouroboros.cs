@@ -34,7 +34,7 @@ internal sealed class OuroborosEnemy : AI, IRegisterableEnemy
 
 	public override Ship BuildShipForSelf(State s)
 	{
-		int hull = s.GetHarderEnemies() ? 19 : 16;
+		int hull = s.GetHarderEnemies() ? 31 : 27;
 		character = new Character {
 			type = "Arachnidrone"
 		};
@@ -75,7 +75,6 @@ internal sealed class OuroborosEnemy : AI, IRegisterableEnemy
 			x = 6,
 			hull = hull,
 			hullMax = hull,
-			shieldMaxBase = 13,
 			ai = this,
 			chassisUnder = "EnemyPack_Ouroboros_chassis",
 			parts = parts
