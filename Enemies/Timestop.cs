@@ -121,7 +121,7 @@ internal sealed class TimestopEnemy : AI, IRegisterableEnemy
 			x = 6,
 			hull = 17,
 			hullMax = 17,
-			shieldMaxBase = 7,
+			shieldMaxBase = 6,
 			ai = this,
 			chassisUnder = "EnemyPack_Inevitable_chassis",
 			parts = parts
@@ -135,13 +135,25 @@ internal sealed class TimestopEnemy : AI, IRegisterableEnemy
 		{
 			actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cannon.middle"),
 			intents = aiCounter % 6 == 1 ? [
+				new IntentAttack
+				{
+					damage = 1,
+					multiHit = 2,
+					key = "cannon.middle"
+				},
 				new IntentStatus
 				{
-					status = Status.powerdrive,
-					key = "cannon.middle",
-					amount = 1,
-					targetSelf = true,
-					dialogueTag = "timeTravellerPowerdrive"
+					status = Status.shield,
+					key = "cannon.left",
+					amount = 3,
+					targetSelf = true
+				},
+				new IntentStatus
+				{
+					status = Status.shield,
+					key = "cannon.right",
+					amount = 3,
+					targetSelf = true
 				},
 				new IntentStatus
 				{
@@ -157,6 +169,14 @@ internal sealed class TimestopEnemy : AI, IRegisterableEnemy
 					amount = 1,
 					targetSelf = true
 				},
+				new IntentStatus
+				{
+					status = Status.powerdrive,
+					key = "wing.right",
+					amount = 1,
+					targetSelf = true,
+					dialogueTag = "timeTravellerPowerdrive"
+				},
 			] : [
 				new IntentAttack
 				{
@@ -166,7 +186,7 @@ internal sealed class TimestopEnemy : AI, IRegisterableEnemy
 				new IntentAttack
 				{
 					damage = 1,
-					multiHit = s.GetHarderElites() ? 2 : 1,
+					multiHit = 2,
 					key = "cannon.middle"
 				},
 				new IntentAttack
@@ -212,7 +232,7 @@ internal sealed class TimestopEnemy : AI, IRegisterableEnemy
 				{
 					status = Status.tempShield,
 					key = "wing.left",
-					amount = 1,
+					amount = s.GetHarderElites() ? 2 : 1,
 					targetSelf = true
 				},
 				new IntentStatus
