@@ -16,7 +16,7 @@ using TheJazMaster.EnemyPack.Patches;
 
 namespace TheJazMaster.EnemyPack.Enemies;
 
-internal sealed class BigGunsEnemy : AI, IRegisterableEnemy
+internal sealed partial class BigGunsEnemy : AI, IRegisterableEnemy
 {
 	[JsonProperty]
 	private int aiCounter;
@@ -25,14 +25,14 @@ internal sealed class BigGunsEnemy : AI, IRegisterableEnemy
 	private static Spr dummyMagnetSprite;
 	private static List<Spr> magnetSprites = null!;
 
-	class GetMagnetSpriteHook : IPostDBInitHook {
+    partial class GetMagnetSpriteHook : IPostDBInitHook {
 		public void PostDBInit() {
 			dummyMagnetSprite = ModEntry.Instance.Helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("Sprites/Parts/magnet.png")).Sprite;
 			DB.parts["EnemyPack_Raider_magnet"] = dummyMagnetSprite;
 
-			Regex re = new("^EnemyPack_Raider_magnet_(\\d+)");
-			magnetSprites = 
-				(from kv in DB.parts
+			Regex re = MagnetSpriteRegex();
+			magnetSprites =
+                [.. from kv in DB.parts
 				where re.IsMatch(kv.Key)
 				select new
 				{
@@ -40,9 +40,12 @@ internal sealed class BigGunsEnemy : AI, IRegisterableEnemy
 					spr = kv.Value
 				} into kv
 				orderby kv.idx
-				select kv.spr).ToList();
+				select kv.spr];
 		}
-	}
+
+        [GeneratedRegex("^EnemyPack_Raider_magnet_(\\d+)")]
+        private static partial Regex MagnetSpriteRegex();
+    }
 
 	public static void Register(IModHelper helper)
 	{
@@ -79,7 +82,7 @@ internal sealed class BigGunsEnemy : AI, IRegisterableEnemy
 				key = "cannon.left",
 				type = PType.cannon,
 				skin = "EnemyPack_Raider_cannon_big4",
-				damageModifier = s.GetHarderElites() ? PDamMod.weak : PDamMod.brittle,
+				damageModifier = PDamMod.weak,
 				offset = new(0, 10)
 			},
 			new Part {key = "scaffold.left4", type = PType.empty, skin = "EnemyPack_Raider_magnet", offset = new(0, 10)},
@@ -116,16 +119,19 @@ internal sealed class BigGunsEnemy : AI, IRegisterableEnemy
 				key = "cannon.right",
 				type = PType.cannon,
 				skin = "EnemyPack_Raider_cannon_big4",
-				damageModifier = s.GetHarderElites() ? PDamMod.weak : PDamMod.brittle,
+				damageModifier = PDamMod.weak,
 				flip = true,
 				offset = new(0, 10)
 			},
 		];
+		if (s.GetHarderElites()) {
+			parts.RemoveAll(p => p.key != null && FourthScaffoldRegex().IsMatch(p.key));
+		}
 		return new Ship {
 			x = 2,
-			hull = 10,
-			hullMax = 10,
-			shieldMaxBase = 10,
+			hull = 9,
+			hullMax = 9,
+			shieldMaxBase = 9,
 			ai = this,
 			chassisUnder = "EnemyPack_Raider_chassis",
 			parts = parts
@@ -231,4 +237,7 @@ internal sealed class BigGunsEnemy : AI, IRegisterableEnemy
 			sprite = magnetSprites.GetModulo((int)(g.state.time * 12.0));
 		}
 	}
+
+    [GeneratedRegex("scaffold.(left|right)4")]
+    private static partial Regex FourthScaffoldRegex();
 }
